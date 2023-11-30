@@ -1,10 +1,12 @@
 ﻿body {
     font-family: 'Open Sans', sans-serif;
     margin: 56px 0 56px 0;
-    background-image: url('https://wallpapers.com/images/featured/best-nba-zn90xecrm49mlwbx.jpg');
+    background-image: url('https://wallpapers.com/images/hd/basketball-nba-logo-wh8ae0q74gl3payt.jpg');
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
+    color:black;
+    font-weight: bold;
 }
 
 /* button default
@@ -40,3 +42,4 @@
 li.page-item a {
     font-size: 0.85rem;
 }
+
