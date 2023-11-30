@@ -1,6 +1,10 @@
 ﻿body {
     font-family: 'Open Sans', sans-serif;
     margin: 56px 0 56px 0;
+    background-image: url('https://wallpapers.com/images/featured/best-nba-zn90xecrm49mlwbx.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
 }
 
 /* button default
