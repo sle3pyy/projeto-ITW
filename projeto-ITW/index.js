@@ -3,8 +3,8 @@ var vm = function () {
     console.log('ViewModel initiated...');
     //---Variáveis locais
     var self = this;
-    self.baseUri = ko.observable('http://192.168.160.58/NBA/API/Arenas');
-    self.displayName = 'NBA Arenas List';
+    self.baseUri = ko.observable('http://192.168.160.58/NBA/API/Players');
+    self.displayName = 'NBA Players List';
     self.error = ko.observable('');
     self.passingMessage = ko.observable('');
     self.records = ko.observableArray([]);
