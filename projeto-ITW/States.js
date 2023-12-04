@@ -3,6 +3,7 @@ var vm = function () {
     console.log('ViewModel initiated...');
     //---Variáveis locais
     var self = this;
+    self.searchb = ko.observable('');
     self.baseUri = ko.observable('http://192.168.160.58/NBA/api/States');
     self.displayName = 'NBA States List';
     self.error = ko.observable('');
@@ -14,6 +15,37 @@ var vm = function () {
     self.hasPrevious = ko.observable(false);
     self.hasNext = ko.observable(false);
     self.Flag = ko.observable('');
+    self.search = function() { 
+        console.log("searching")
+        if ($("#searchb").val() === "") {
+            showLoading();
+            var pg = getUrlParameter('page');
+            console.log(pg);
+            if (pg == undefined)
+                self.activate(1);
+            else {
+                self.activate(pg);
+            }
+        } else {
+            var Uri ='http://192.168.160.58/NBA/api/States/Search?q='+ $("#searchb").val();
+            self.playerlist = [];
+        ajaxHelper(Uri, 'GET').done(function(data) {
+            console.log(data.length)
+            if (data.length == 0) {
+                return alert('No results found')
+            }
+            self.totalPages(1)
+            console.log(data);
+            showLoading();
+            self.records(data);
+            self.totalRecords(data.length);
+            hideLoading();
+            for (var i in data) {
+                self.playerlist.push(data[i]);
+                }
+            });
+        };
+    };
     
     self.previousPage = ko.computed(function () {
         return self.currentPage() * 1 - 1;
