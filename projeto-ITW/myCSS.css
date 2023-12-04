@@ -46,3 +46,10 @@ li.page-item a {
     background-image: url('https://wallpapers.com/images/hd/basketball-nba-logo-wh8ae0q74gl3payt.jpg');
     background-size: cover;
 }
+
+.centeri{text-align: center;}
+
+.card{
+    background-color:rgba(0,0,0,0.5);
+    color:whitesmoke
+}

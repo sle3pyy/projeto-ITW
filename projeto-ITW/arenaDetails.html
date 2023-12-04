@@ -34,10 +34,33 @@
     <!-- Work Area-->
     <div class="container">
         <div class="py-2 border-bottom mb-3">
+            <h3 data-bind="text:Name() +' [' + Id() + ']'"></h2>
             <h2 data-bind="text:Name() +' [' + Id() + ']'"></h2>
         </div>
         <!-- ko if:Name().length > 0 -->
-        <div class="row border-bottom g-2">
+        <div class="row g-2">
+            <div class="col-4 centeri card">Name
+                <p data-bind="text:Name"></p>
+            </div>
+            <div class="col-4 centeri card">State
+                <p data-bind="text: StateName"></p>
+            </div>
+            <div class="col-4 centeri card">Team
+                <p data-bind="text:'[' + TeamAcronym() + '] ' + TeamName()"></p>
+            </div>
+        </div>
+        <div class="row g-2">
+            <div class="col-4 centeri card">Location
+                <p data-bind="text: Location"></p>
+            </div>
+            <div class="col-4 centeri card">Capacity
+                <p data-bind="text: Capacity"></p>
+            </div>
+            <div class="col-4 centeri card">Opened
+                <p data-bind="text: Opened"></p>
+            </div>
+        </div>
+        <!--<div class="row border-bottom g-2">
             <div class="col-2">Game Id</div><div class="col-10" data-bind="text: Id"></div>
         </div>
         <div class="row border-bottom g-2">
@@ -55,11 +78,9 @@
         </div>
         <div class="row border-bottom g-2">
             <div class="col-2">Capacity</div><div class="col-10" data-bind="text: Capacity"></div>
-        </div>
+        </div>-->
         <!-- ko if:Opened().length > 0 -->
-        <div class="row border-bottom g-2">
-            <div class="col-2">Opened</div><div class="col-10" data-bind="text: Opened"></div>
-        </div>
+ 
         <!-- /ko -->
         <div class="row border-bottom g-2" data-bind="visible: Photo() != '' && Photo() != null">
             <div class="col-2">Photo</div><div class="small col-10">

@@ -33,45 +33,44 @@
     </nav>
     <!-- Work Area-->
     <div class="container">
-        <div class="py-2 border-bottom mb-3">
+        <div class="py-2 mb-3">
             <h2>a</h2>
-            <h2 data-bind="text:Name() +' [' + Id() + ']'"></h2>
+            <h2 class="centeri" style="color:whitesmoke"data-bind="text:Name() +' [' + Id() + ']'"></h2>
         </div>
         <!-- ko if:Name().length > 0 -->
-        <div class="row border-bottom g-2">
-            <div class="col-2">Name</div><div class="col-10" data-bind="text: Name"></div>
+        <div class="row g-2 ">
+            <div class="col-4 centeri card">Name
+                <p data-bind="text:Name"></p>
+            </div>
+            <div class="col-4 centeri card">Birthdate
+                <p data-bind="text: Birthdate"></p>
+            </div>
+            <div class="col-4 centeri card">Country
+                <p data-bind="text: CountryName"></p>
+            </div>
         </div>
-        <div class="row border-bottom g-2">
-            <div class="col-2">Birthdate</div><div class="col-10" data-bind="text: Birthdate"></div>
+        <div class="row g-2 ">
+            <div class="col-6 centeri card">Position
+                <p data-bind="text:PositionName"></p>
+            </div>
+            <div class="col-6 centeri card">School
+                <p data-bind="text: School"></p>
+            </div>
         </div>
-        <div class="row border-bottom g-2">
-            <div class="col-2">CountryId</div><div class="col-10" data-bind="text:CountryId"></div>
-        </div>
-        <div class="row border-bottom g-2">
-            <div class="col-2">PositionId</div><div class="col-10" data-bind="text: PositionId"></div>
-        </div>
-
-        <div class="row border-bottom g-2">
-            <div class="col-2">School</div><div class="col-10" data-bind="text: School"></div>
-        </div>
-
-        <!-- ko if:DraftYear().length > 0 -->
-        <div class="row border-bottom g-2">
-            <div class="col-2">DraftYear</div><div class="col-10" data-bind="text: DraftYear"></div>
-        </div>
-        <!-- /ko -->
-        <!-- ko if:Height().length > 0 -->
-        <div class="row border-bottom g-2">
-            <div class="col-2">Height</div><div class="col-10" data-bind="text: Height"></div>
-        </div>
-        <!-- /ko -->
-        <!-- ko if:Weight().length > 0 -->
-        <div class="row border-bottom g-2">
-            <div class="col-2">Weight</div><div class="col-10" data-bind="text: Weight"></div>
+        <div class="row g-2 ">
+            <div class="col-4 centeri card">Draft year
+                <p data-bind="text:DraftYear"></p>
+            </div>
+            <div class="col-4 centeri card">Height
+                <p data-bind="text: Height"></p>
+            </div>
+            <div class="col-4 centeri card">Weight
+                <p data-bind="text: Weight"></p>
+            </div>
         </div>
         <!-- /ko -->
         <div class="row border-bottom g-2" data-bind="visible: Photo() != '' && Photo() != null">
-            <div class="col-2">Photo</div><div class="small col-10">
+            <div class="col-3"></div><div class="small col-9">
                 <img class="img-thumbnail" data-bind="attr:{src: Photo}"><br />
                 <i class="fa fa-link"></i> [<a class="link-dark text-decoration-none" data-bind="attr: { href: Photo }, text: Photo" target="_blank"></a>]
             </div>
