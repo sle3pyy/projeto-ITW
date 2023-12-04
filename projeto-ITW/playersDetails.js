@@ -1,46 +1,57 @@
-// ViewModel KnockOut
+﻿// ViewModel KnockOut
 var vm = function () {
     console.log('ViewModel initiated...');
     //---Variáveis locais
     var self = this;
     self.baseUri = ko.observable('http://192.168.160.58/NBA/API/Players/');
-    self.displayName = 'NBA Player Details';
+    self.displayName = 'NBA Players Details';
     self.error = ko.observable('');
     self.passingMessage = ko.observable('');
     //--- Data Record
     self.Id = ko.observable('');
     self.Name = ko.observable('');
-    self.Birthdate = ko.observable('');
+    self.CountryId = ko.observable('');
     self.CountryName = ko.observable('');
-    self.DraftYear = ko.observable('');
-    self.TeamName = ko.observable('');
-    self.School = ko.observable('');
+    self.Birthdate = ko.observable('');
     self.PositionName = ko.observable('');
-    self.Height = ko.observable('');
+    self.PositionId = ko.observable('');
     self.Weight = ko.observable('');
+    self.School = ko.observable('');
+    self.Height = ko.observable('');
+    self.Biography = ko.observable('');
+    self.Seasons = ko.observable('');
+    self.Teams = ko.observable('');
+    self.DraftYear = ko.observable('');
+    
     self.Photo = ko.observable('');
 
     //--- Page Events
     self.activate = function (id) {
         console.log('CALL: getPlayer...');
         var composedUri = self.baseUri() + id;
+        console.log(composedUri);
         ajaxHelper(composedUri, 'GET').done(function (data) {
             console.log(data);
             hideLoading();
             self.Id(data.Id);
             self.Name(data.Name);
-            self.Birthdate(data.Birthdate);
+            self.CountryId(data.CountryId);
             self.CountryName(data.CountryName);
-            self.DraftYear(data.DraftYear);
-            self.TeamName(data.TeamName);
-            self.School(data.School);
+            self.Birthdate(data.Birthdate);
             self.PositionName(data.PositionName);
-            self.Height(data.Height);
+            self.PositionId(data.PositionId);
+            self.DraftYear(data.DraftYear);
             self.Weight(data.Weight);
+            self.School(data.School);
+            self.Height(data.Height);
+            self.Biography(data.Biography);
             self.Photo(data.Photo);
+            self.Seasons(data.Seasons);
+            self.Teams(data.Teams);
         });
     };
 
+  
     //--- Internal functions
     function ajaxHelper(uri, method, data) {
         self.error(''); // Clear error message
@@ -80,6 +91,7 @@ var vm = function () {
             sParameterName = sURLVariables[i].split('=');
 
             if (sParameterName[0] === sParam) {
+
                 return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
             }
         }
