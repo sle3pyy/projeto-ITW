@@ -42,4 +42,7 @@
 li.page-item a {
     font-size: 0.85rem;
 }
-
+.navbar.fixed-top{
+    background-image: url('https://wallpapers.com/images/hd/basketball-nba-logo-wh8ae0q74gl3payt.jpg');
+    background-size: cover;
+}
