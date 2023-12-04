@@ -33,9 +33,21 @@
     </nav>
     <!-- Working Area -->
     <div class="container">
-        <div class="border-bottom py-2 mb-2">
+        <div class="row">
+        <div class="col-6">
+            <h3>a</h3>
             <h2 data-bind="text:displayName"></h2>
         </div>
+        <div class="col-6">
+            <h3>a</h3>
+            <form style="float:right">
+                <div class="form-group">
+                  <input placeholder="pesquisar..." id="searchb" data-bind="textInput: searchb, event:{change:search}">
+                </div>
+            </form>    
+        </div>    
+        </div>
+
         <!-- ko if:records().length > 0 -->
         <div class="row small">
             <p class=" col-4 mr-auto pt-2">
