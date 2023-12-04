@@ -1,9 +1,15 @@
 // ViewModel KnockOut
 var vm = function () {
+    
     console.log('ViewModel initiated...');
     //---Variáveis locais
     var self = this;
-    self.baseUri = ko.observable('http://192.168.160.58/NBA/API/Players');
+    
+    self.searchb = ko.observable('');
+
+    ; 
+    console.log("did it")
+    self.baseUri = ko.observable('http://192.168.160.58/NBA/api/Players')
     self.displayName = 'NBA Players List';
     self.error = ko.observable('');
     self.passingMessage = ko.observable('');
@@ -13,6 +19,37 @@ var vm = function () {
     self.totalRecords = ko.observable(50);
     self.hasPrevious = ko.observable(false);
     self.hasNext = ko.observable(false);
+    self.search = function() { // mudar isto !!!!!!!!!!!!!
+        console.log("searching")
+        if ($("#searchb").val() === "") {
+            showLoading();
+            var pg = getUrlParameter('page');
+            console.log(pg);
+            if (pg == undefined)
+                self.activate(1);
+            else {
+                self.activate(pg);
+            }
+        } else {
+            var Uri ='http://192.168.160.58/NBA/api/Players/Search?q='+ $("#searchb").val();
+            self.playerlist = [];
+        ajaxHelper(Uri, 'GET').done(function(data) {
+            console.log(data.length)
+            if (data.length == 0) {
+                return alert('No results found')
+            }
+            self.totalPages(1)
+            console.log(data);
+            showLoading();
+            self.records(data);
+            self.totalRecords(data.length);
+            hideLoading();
+            for (var i in data) {
+                self.playerlist.push(data[i]);
+                }
+            });
+        };
+    };
     self.previousPage = ko.computed(function () {
         return self.currentPage() * 1 - 1;
     }, self);
@@ -40,8 +77,11 @@ var vm = function () {
         for (var i = 1; i <= size; i++)
             list.push(i + step);
         return list;
+        
     };
-
+   
+    
+    
     //--- Page Events
     self.activate = function (id) {
         console.log('CALL: getArenas...');
@@ -57,6 +97,7 @@ var vm = function () {
             self.totalPages(data.TotalPages);
             self.totalRecords(data.TotalRecords);
             //self.SetFavourites();
+            
         });
     };
 
@@ -119,9 +160,12 @@ var vm = function () {
         self.activate(pg);
     }
     console.log("VM initialized!");
+    
 };
 
 $(document).ready(function () {
     console.log("ready!");
     ko.applyBindings(new vm());
 });
+
+
