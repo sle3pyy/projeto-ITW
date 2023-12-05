@@ -95,7 +95,7 @@ var vm = function () {
     showLoading();
     var ag= getUrlParameter('acronym');
     var pg = getUrlParameter('id');
-    console.log(pg,tg);
+    console.log(pg,ag);
     if (pg == undefined)
         self.activate(1);
     else {
