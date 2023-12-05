@@ -46,6 +46,30 @@ var vm = function () {
             });
         };
     };
+    self.clean = function() { 
+        console.log("Clean")
+        $("#searchb").val('')
+            var Uri ='http://192.168.160.58/NBA/api/States'
+            self.playerlist = [];
+            ajaxHelper(Uri, 'GET').done(function (data) {
+                console.log(data);
+                
+                hideLoading();
+                self.records(data.Records);
+               
+                self.currentPage(data.CurrentPage);
+                self.hasNext(data.HasNext);
+                self.hasPrevious(data.HasPrevious);
+                self.pagesize = ko.observable(20);
+                self.totalPages(data.TotalPages);
+                self.totalRecords(data.TotalRecords);
+                self.Flag(data.Flag);
+                
+                
+                //self.SetFavourites();
+            });
+        };
+        
     
     self.previousPage = ko.computed(function () {
         return self.currentPage() * 1 - 1;
