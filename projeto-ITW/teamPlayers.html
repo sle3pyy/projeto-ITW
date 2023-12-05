@@ -4,7 +4,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>ITW 2023/24 - NBA Teams Details</title>
+    <title>ITW 2023/24 - NBA Arena Details</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
@@ -34,49 +34,51 @@
     <!-- Work Area-->
     <div class="container card">
         
-            <div class="py-2 mb-3">
-                <h2>a</h2>
-                <h2 class="centeri" style="color:whitesmoke"data-bind="text:Name() +' [' + Id() + ']'"></h2>
-            </div>
-            <!-- ko if:Name().length > 0 -->
-            <div class="row g-2 ">
-                <div class="col-6">
-                    <div class="centeri ">Name
-                        <p data-bind="text:'[' + Acronym() + '] ' + Name()"></p>
-                    </div>
-                    <div class="centeri ">Conference name
-                        <p data-bind="text: ConferenceName()"></p>
-                    </div>
-                    <div class="centeri ">Location
-                        <p data-bind="text: DivisionName"></p>
-                    </div>
-                    <div class="centeri ">State
-                        <p data-bind="text:StateName"></p>
-                    </div>
-                    <div class="centeri ">City
-                        <p data-bind="text: City"></p>
-                    </div>
-                </div>
-                
-            <div class="col-6" >
-                <div data-bind="visible: Logo() != '' && Logo() != null">
-                    <img  class="imgh" data-bind="attr:{src:Logo}"><br /> 
-                </div>  
-            </div>
-            <div class="row ">
-                <div data-bind="html:History"></div>
-            </div>
+        <div class="py-2 mb-3">
+            <h2>a</h2>
+            <h2 class="centeri" style="color:whitesmoke"data-bind="text:Name() +'s players'"></h2>
         </div>
-        <!-- /ko -->
-    </div>
-        
-    </div>
-    <div class="container">
-    <a href="./Teams.html" class="btn btn-default btn-sm small"><i class="fa fa-list"></i> Back to List</a>
-
-    <a class="btn btn-default btn-sm small" data-bind="attr: { href:'./teamPlayers.html?id=' + Id() + '&acronym=' + Acronym()}"><i class="fa fa-list" ></i>Team's Players</a>
-    </div>
-    <!-- Modal -->
+    
+    <table class="table table-sm small">
+        <thead class="table-secondary">
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Name</th>
+                <th scope="col">Birthdate</th>
+                <th scope="col">Country</th>
+                <th scope="col">Position</th>
+                <th scope="col">Height</th>
+                <th scope="col">Weight</th>
+                <th scope="col">School</th>
+                <th scope="col" class="text-right"></th>
+            </tr>
+        </thead>
+        <tbody data-bind="foreach: Players">
+            <tr>
+                <td class="align-middle" data-bind="text:Id"></td>
+                <td class="align-middle" data-bind="text:Name"></td>
+                <td class="align-middle" data-bind="text:Birthdate"></td>
+                <td class="align-middle" data-bind="text:CountryName"></td>
+                <td class="align-middle" data-bind="text:PositionName"></td>
+                <td class="align-middle" data-bind="text:Height"></td>
+                <td class="align-middle" data-bind="text:Weight"></td>
+                <td class="align-middle" data-bind="text:School"></td>
+                
+                <td class="text-end">
+                    <a class="btn btn-default btn-light btn-xs" data-bind="attr: { href:'./playersDetails.html?id=' + Id }"><i class="fa fa-eye" title="Show details"></i></a>
+                    <button class="btn btn-default btn-xs"><i class="fa fa-heart-o" data-bind="attr : { 'id': 'favourite_' + Id }" title="Add to favorites"></i></button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+    
+</div>
+<div class="container">
+<a href="./Teams.html" class="btn btn-default btn-sm small"><i class="fa fa-list"></i> Back to Teams</a>
+<a class="btn btn-default btn-light btn-xs" data-bind="attr: { href:'./teamDetails.html?id=' + Id() + '&acronym=' + Acronym()}"><i class="fa fa-eye" title="Back to details"></i></a>
+</div>
+        <!-- Modal -->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
@@ -91,7 +93,6 @@
             </div>
         </div>
     </div>
-    
     <!-- End of Work Area -->
     <nav class="navbar navbar-transparent bg-transparent position-sticky">
         <div class="container small">
@@ -106,6 +107,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.1/knockout-latest.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
-    <script src="teamDetails.js"></script>
+    <script src="teamPlayers.js"></script>
 </body>
 </html>
