@@ -22,9 +22,10 @@ var vm = function () {
             hideLoading();
             self.Id(data.Id);
             self.Season(data.Season)
-            self.TId(data.Teams[0]);
-            self.PId(data.Players[0]);
-            s
+            self.TId(data.Teams);
+            console.log(self.Tid)
+            self.PId(data.Players);
+            
             
         });
     };
