@@ -8,7 +8,6 @@ var vm = function () {
     self.error = ko.observable('');
     self.passingMessage = ko.observable('');
     //--- Data Record
-    var tg = getUrlParameter('Acronym')
     self.Id = ko.observable('');
     self.Acronym = ko.observable('')
     self.Name = ko.observable('');
@@ -21,6 +20,7 @@ var vm = function () {
     self.City = ko.observable('');
     self.Logo = ko.observable('');
     self.History = ko.observable('');
+    self.Players = ko.observable([]);
 
     //--- Page Events
     self.activate = function (id,acronym) {
@@ -42,6 +42,7 @@ var vm = function () {
             self.City(data.City);
             self.Logo(data.Logo);
             self.History(data.History);
+            self.Players(data.Players);
         });
     };
 
