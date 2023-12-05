@@ -4,7 +4,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>ITW 2023/24 - NBA Arena Details</title>
+    <title>ITW 2023/24 - NBA Teams Details</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
@@ -42,7 +42,7 @@
             <div class="col-4 centeri card">Name
                 <p data-bind="text:'[' + Acronym() + '] ' + Name()"></p>
             </div>
-            <div class="col-4 centeri card">ConferenceName
+            <div class="col-4 centeri card">Conference name
                 <p data-bind="text: ConferenceName"></p>
             </div>
             <div class="col-4 centeri card">Location
@@ -50,20 +50,21 @@
             </div>
         </div>
         <div class="row g-2 ">
-            <div class="col-6 centeri card">QLQ
+            <div class="col-6 centeri card">State
                 <p data-bind="text:StateName"></p>
             </div>
-            <div class="col-6 centeri card">city
+            <div class="col-6 centeri card">City
                 <p data-bind="text: City"></p>
             </div>
         </div>
         
         <!-- /ko -->
-        <div class="row border-bottom g-2" data-bind="visible: Logo() != '' && Logo() != null">
-            <div class="col-3"></div><div class="small col-9">
-                <img class="img-thumbnail" data-bind="attr:{src:Logo}"><br />
-                <i class="fa fa-link"></i>[<a class="link-dark text-decoration-none" data-bind="attr: { href: Logo }, text: Logo" target="_blank"></a>]
-            </div>
+        <div class="row g-2" data-bind="visible: Logo() != '' && Logo() != null">
+                <img class="img-thumbnail" data-bind="attr:{src:Logo}" ><br />   
+        </div>
+        <div class="row card">
+            <div data-bind="html:History"></div>
+    
         </div>
         <!-- /ko -->
         <a href="./Teams.html" class="btn btn-default btn-sm small"><i class="fa fa-list"></i> Back to List</a>
@@ -83,6 +84,7 @@
             </div>
         </div>
     </div>
+    
     <!-- End of Work Area -->
     <nav class="navbar navbar-transparent bg-transparent position-sticky">
         <div class="container small">
