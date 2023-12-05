@@ -53,7 +53,8 @@ li.page-item a {
     background-color:rgba(0,0,0,0.5);
     color:whitesmoke
 }
-
-.he{
-    height: 10vh
+.imgh{
+    width: 63vh;
+    height: 34vh;
+    align-items: center center;
 }

@@ -33,38 +33,39 @@
     </nav>
     <!-- Work Area-->
     <div class="container">
-        <div class="py-2 mb-3">
-            <h2>a</h2>
-            <h2 class="centeri" style="color:whitesmoke"data-bind="text:Name() +' [' + Id() + ']'"></h2>
-        </div>
-        <!-- ko if:Name().length > 0 -->
-        <div class="row g-2 ">
-            <div class="col-4 centeri card">Name
-                <p data-bind="text:'[' + Acronym() + '] ' + Name()"></p>
-            </div>
-            <div class="col-4 centeri card">Conference name
-                <p data-bind="text: ConferenceName"></p>
-            </div>
-            <div class="col-4 centeri card">Location
-                <p data-bind="text: DivisionName"></p>
-            </div>
-        </div>
-        <div class="row g-2 ">
-            <div class="col-6 centeri card">State
-                <p data-bind="text:StateName"></p>
-            </div>
-            <div class="col-6 centeri card">City
-                <p data-bind="text: City"></p>
-            </div>
-        </div>
         
-        <!-- /ko -->
-        <div class="row g-2" data-bind="visible: Logo() != '' && Logo() != null">
-                <img class="img-thumbnail" data-bind="attr:{src:Logo}" ><br />   
-        </div>
-        <div class="row card">
-            <div data-bind="html:History"></div>
-    
+            <div class="py-2 mb-3">
+                <h2>a</h2>
+                <h2 class="centeri" style="color:whitesmoke"data-bind="text:Name() +' [' + Id() + ']'"></h2>
+            </div>
+            <!-- ko if:Name().length > 0 -->
+            <div class="row g-2 ">
+                <div class="col-6">
+                    <div class="centeri card ">Name
+                        <p data-bind="text:'[' + Acronym() + '] ' + Name()"></p>
+                    </div>
+                    <div class="centeri card">Conference name
+                        <p data-bind="text: ConferenceName()"></p>
+                    </div>
+                    <div class="centeri card">Location
+                        <p data-bind="text: DivisionName"></p>
+                    </div>
+                    <div class="centeri card">State
+                        <p data-bind="text:StateName"></p>
+                    </div>
+                    <div class="centeri card">City
+                        <p data-bind="text: City"></p>
+                    </div>
+                </div>
+                
+            <div class="col-6" >
+                <div data-bind="visible: Logo() != '' && Logo() != null">
+                    <img  class="img-thumbnail imgh" data-bind="attr:{src:Logo}"><br /> 
+                </div>  
+            </div>
+            <div class="row card">
+                <div data-bind="html:History"></div>
+            </div>
         </div>
         <!-- /ko -->
         <a href="./Teams.html" class="btn btn-default btn-sm small"><i class="fa fa-list"></i> Back to List</a>
