@@ -9,17 +9,10 @@ var vm = function () {
     self.passingMessage = ko.observable('');
     //--- Data Record
     self.Id = ko.observable('');
-    self.Name = ko.observable('');
-    self.StateId = ko.observable('');
-    self.StateName = ko.observable('');
-    self.AcronymId = ko.observable('');
-    self.ConferenceId = ko.observable('');
-    self.ConferenceName = ko.observable('');
-    self.City = ko.observable('');
-    self.DivisionName = ko.observable('');
-    self.DivisionId = ko.observable('');
-    self.Logo = ko.observable('');
-    self.History = ko.observable('');
+    self.Season = ko.observable('');
+    self.TId = ko.observable('');
+    self.PId = ko.observable('');
+
     //--- Page Events
     self.activate = function (id) {
         console.log('CALL: getStates...');
@@ -28,17 +21,11 @@ var vm = function () {
             console.log(data);
             hideLoading();
             self.Id(data.Id);
-            self.Name(data.Name);
-            self.Acronym(data.Acronym);
-            self.StateId(data.StateId);
-            self.StateName(data.StateName);
-            self.ConferenceId(data.ConferenceId);
-            self.ConferenceName(data.ConferenceName);
-            self.DivisionName(data.DivisionName);
-            self.DivisionId(data.DivisionId);
-            self.City(data.City);
-            self.History(data.History);
-            self.Logo(data.Logo);
+            self.Season(data.Season)
+            self.TId(data.Teams[0]);
+            self.PId(data.Players[0]);
+            s
+            
         });
     };
 

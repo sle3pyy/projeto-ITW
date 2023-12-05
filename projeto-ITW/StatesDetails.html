@@ -34,34 +34,18 @@
     <!-- Work Area-->
     <div class="container">
         <div class="py-2 border-bottom mb-3">
-            <h3 data-bind="text:Name() +' [' + Id() + ']'"></h2>
-            <h2 data-bind="text:Name() +' [' + Id() + ']'"></h2>
+            <h3 data-bind="text:Season() +' [' + Id() + ']'"></h2>
+            <h2 data-bind="text:Season() +' [' + Id() + ']'"></h2>
         </div>
-        <!-- ko if:Name().length > 0 -->
+        
         <div class="row g-2">
-            <div class="col-4 centeri card">Name
-                <p data-bind="text:Name"></p>
-            </div>
-            <div class="col-4 centeri card">Acronym
-                <p data-bind="text:Acronym"></p>
-            </div>
-            <div class="col-4 centeri card">State
-                <p data-bind="text: StateName"></p>
-            </div>
-            <div class="col-4 centeri card">Division
-                <p data-bind="text:'(' + DivisionId() + ') ' + DivisionName()"></p>
-            </div>
+            <div class="col-4 centeri card">Season
+                <p data-bind="text:Season"></p>
+        <div class="row border-bottom g-2">
+            <div class="col-2">Teams</div><div class="col-10"><a class="nav-link" data-bind=" attr: { href:'./teamsDetails.html?id=' + TId }" title="Show State Details"></a></div>
         </div>
-        <div class="row g-2">
-            <div class="col-4 centeri card">City
-                <p data-bind="text: City"></p>
-            </div>
-            <div class="col-4 centeri card">Conference
-                <p data-bind="text:'(' + ConferenceId() + ') ' + ConferenceName()"></p>
-            </div>
-            <div class="col-4 centeri card">History
-                <p data-bind="text: History"></p>
-            </div>
+        <div class="row border-bottom g-2">
+            <div class="col-2">Players</div><div class="col-10"><a class="nav-link" data-bind=" attr: { href:'./playersDetails.html?id=' + PId }" title="Show State Details"></a></div>
         </div>
         <!--<div class="row border-bottom g-2">
             <div class="col-2">Game Id</div><div class="col-10" data-bind="text: Id"></div>
@@ -82,16 +66,9 @@
         <div class="row border-bottom g-2">
             <div class="col-2">Capacity</div><div class="col-10" data-bind="text: Capacity"></div>
         </div>-->
-        <!-- ko if:Opened().length > 0 -->
- 
-        <!-- /ko -->
-        <div class="row border-bottom g-2" data-bind="visible: Logo() != '' && Logo() != null">
-            <div class="col-2">Photo</div><div class="small col-10">
-                <img class="img-thumbnail" data-bind="attr:{src: Logo}"><br />
-                <i class="fa fa-link"></i> [<a class="link-dark text-decoration-none" data-bind="attr: { href: Logo }, text: Logo" target="_blank"></a>]
-            </div>
-        </div>
-        <!-- /ko -->
+       
+        
+        
         <a href="./States.html" class="btn btn-default btn-sm small"><i class="fa fa-list"></i> Back to List</a>
     </div>
     <!-- Modal -->
