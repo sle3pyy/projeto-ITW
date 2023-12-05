@@ -27,7 +27,7 @@ var vm = function () {
             }
         } else {
             var Uri ='http://192.168.160.58/NBA/api/Arenas/Search?q='+ $("#searchb").val();
-            self.playerlist = [];
+            self.arenaslist = [];
         ajaxHelper(Uri, 'GET').done(function(data) {
             console.log(data.length)
             if (data.length == 0) {
@@ -40,7 +40,7 @@ var vm = function () {
             self.totalRecords(data.length);
             hideLoading();
             for (var i in data) {
-                self.playerlist.push(data[i]);
+                self.arenaslist.push(data[i]);
                 } 
             });
         };
@@ -63,6 +63,10 @@ var vm = function () {
                 //self.SetFavourites();
             });
         };
+        self.onEnter = function(d,e) {
+            e.keyCode === 13 && self.search();
+            return true;
+        };    
     self.previousPage = ko.computed(function () {
         return self.currentPage() * 1 - 1;
     }, self);
@@ -174,7 +178,39 @@ var vm = function () {
 $(document).ready(function () {
     console.log("ready!");
     ko.applyBindings(new vm());
+    $("#searchb").autocomplete({
+        minLength: 1,
+        autoFill: true,
+        source: function (request, response) {
+            $.ajax({
+                type: 'GET',
+                url: 'http://192.168.160.58/NBA/api/Arenas/Search?q='+ $("#searchb").val(),
+                success: function (data) {
+                    response($.map(data, function (item) {
+                        return item.Name;
+                    }));
+                },
+                error: function(result) {
+                    alert(result.statusText);
+                },
+            });
+        },
+        select: function (e, ui) {
+            $.ajax({
+                type: 'GET',
+                url: 'http://192.168.160.58/NBA/api/Arenas/Search?q=' + ui.item.label,
+                success: function (data) {
+                    window.location = 'arenaDetails.html?id=' + data[0].Id;
+                }
+            })
+        },
+        messages: {
+            noResults: '',
+            results: function() {}
+        }
+    });
 });
+
 
 $(document).ajaxComplete(function (event, xhr, options) {
     $("#myModal").modal('hide');

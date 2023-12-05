@@ -68,6 +68,10 @@ var vm = function () {
                 //self.SetFavourites();
             });
         };
+        self.onEnter = function(d,e) {
+            e.keyCode === 13 && self.search();
+            return true;
+        };
     self.previousPage = ko.computed(function () {
         return self.currentPage() * 1 - 1;
     }, self);
