@@ -26,7 +26,7 @@ var vm = function () {
                 self.activate(pg);
             }
         } else {
-            var Uri ='http://192.168.160.58/NBA/api/Players/Search?q='+ $("#searchb").val();
+            var Uri ='http://192.168.160.58/NBA/api/Seasons/Search?q='+ $("#searchb").val();
             self.playerlist = [];
         ajaxHelper(Uri, 'GET').done(function(data) {
             console.log(data.length)
@@ -48,7 +48,7 @@ var vm = function () {
     self.clean = function() { 
         console.log("Clean")
         $("#searchb").val('')
-            var Uri ='http://192.168.160.58/NBA/api/Players'
+            var Uri ='http://192.168.160.58/NBA/api/Seasons'
             self.playerlist = [];
             ajaxHelper(Uri, 'GET').done(function (data) {
             console.log(data);

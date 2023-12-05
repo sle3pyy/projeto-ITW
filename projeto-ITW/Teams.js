@@ -15,7 +15,7 @@ var vm = function () {
     self.hasPrevious = ko.observable(false);
     self.hasNext = ko.observable(false);
     
-    self.search = function() { // mudar isto !!!!!!!!!!!!!
+    self.search = function() { 
         console.log("searching")
         if ($("#searchb").val() === "") {
             showLoading();
@@ -27,7 +27,7 @@ var vm = function () {
                 self.activate(pg);
             }
         } else {
-            var Uri ='http://192.168.160.58/NBA/api/Players/Search?q='+ $("#searchb").val();
+            var Uri ='http://192.168.160.58/NBA/api/Teams/Search?q='+ $("#searchb").val();
             self.playerlist = [];
         ajaxHelper(Uri, 'GET').done(function(data) {
             console.log(data.length)
@@ -50,7 +50,7 @@ var vm = function () {
     self.clean = function() { 
         console.log("Clean")
         $("#searchb").val('')
-            var Uri ='http://192.168.160.58/NBA/api/Players'
+            var Uri ='http://192.168.160.58/NBA/api/Teams'
             self.playerlist = [];
             ajaxHelper(Uri, 'GET').done(function (data) {
             console.log(data);
@@ -98,29 +98,7 @@ var vm = function () {
             list.push(i + step);
         return list;
     };
-    self.clean = function() { 
-        console.log("Clean")
-        $("#searchb").val('')
-            var Uri ='http://192.168.160.58/NBA/api/Teams'
-            self.playerlist = [];
-            ajaxHelper(Uri, 'GET').done(function (data) {
-            console.log(data);
-            hideLoading();
-            self.records(data.Records);
-            self.currentPage(data.CurrentPage);
-            self.hasNext(data.HasNext);
-            self.hasPrevious(data.HasPrevious);
-            self.pagesize(data.PageSize)
-            self.totalPages(data.TotalPages);
-            self.totalRecords(data.TotalRecords)
-                //self.SetFavourites();
-            });
-        };
-        self.onEnter = function(d,e) {
-            e.keyCode === 13 && self.search();
-            return true;
-        };    
-
+    
     //--- Page Events
     self.activate = function (id) {
         console.log('CALL: getTeams...');

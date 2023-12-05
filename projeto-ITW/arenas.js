@@ -14,6 +14,7 @@ var vm = function () {
     self.totalRecords = ko.observable(50);
     self.hasPrevious = ko.observable(false);
     self.hasNext = ko.observable(false);
+    
     self.search = function() { 
         console.log("searching")
         if ($("#searchb").val() === "") {
@@ -60,6 +61,7 @@ var vm = function () {
             self.pagesize(20)
             self.totalPages(data.TotalPages);
             self.totalRecords(data.TotalRecords)
+            
                 //self.SetFavourites();
             });
         };
@@ -110,6 +112,7 @@ var vm = function () {
             self.pagesize(data.PageSize)
             self.totalPages(data.TotalPages);
             self.totalRecords(data.TotalRecords);
+            
             //self.SetFavourites();
         });
     };
