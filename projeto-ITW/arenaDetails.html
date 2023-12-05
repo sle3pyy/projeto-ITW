@@ -32,65 +32,46 @@
         </div>
     </nav>
     <!-- Work Area-->
-    <div class="container">
-        <div class="py-2 border-bottom mb-3">
+    <div class="container card">
+        <div class="py-2 border-bottom mb-3 ">
             <h3 data-bind="text:Name() +' [' + Id() + ']'"></h2>
-            <h2 data-bind="text:Name() +' [' + Id() + ']'"></h2>
+            <h2 class="centeri" data-bind="text:Name() +' [' + Id() + ']'"></h2>
         </div>
-        <!-- ko if:Name().length > 0 -->
+       
         <div class="row g-2">
-            <div class="col-4 centeri card">Name
+            
+            <div class="col-4 centeri ">Name
                 <p data-bind="text:Name"></p>
             </div>
-            <div class="col-4 centeri card">State
-                <p data-bind="text: StateName"></p>
+            <div class="col-4 centeri ">State
+                <p><a class="nav-link" data-bind="text:StateName, attr: { href:'./stateDetails.html?id=' + StateId() }" title="Show State Details"></a></p>
             </div>
-            <div class="col-4 centeri card">Team
-                <p data-bind="text:'[' + TeamAcronym() + '] ' + TeamName()"></p>
+            <div class="col-4 centeri ">Team
+                <p><a class="nav-link" data-bind="text:'[' + TeamAcronym() + '] ' + TeamName(), attr: { href:'./teamDetails.html?id=' + TeamId() + '&acronym=' + TeamAcronym()}" title="Show Team Details"></a></p>
             </div>
         </div>
         <div class="row g-2">
-            <div class="col-4 centeri card">Location
+            <div class="col-4 centeri ">Location
                 <p data-bind="text: Location"></p>
             </div>
-            <div class="col-4 centeri card">Capacity
+            <div class="col-4 centeri ">Capacity
                 <p data-bind="text: Capacity"></p>
             </div>
-            <div class="col-4 centeri card">Opened
+            <div class="col-4 centeri">Opened
                 <p data-bind="text: Opened"></p>
             </div>
         </div>
-        <!--<div class="row border-bottom g-2">
-            <div class="col-2">Game Id</div><div class="col-10" data-bind="text: Id"></div>
-        </div>
-        <div class="row border-bottom g-2">
-            <div class="col-2">Name</div><div class="col-10" data-bind="text: Name"></div>
-        </div>
-        <div class="row border-bottom g-2">
-            <div class="col-2">State</div><div class="col-10"><a class="nav-link" data-bind="text:StateName, attr: { href:'./stateDetails.html?id=' + StateId }" title="Show State Details"></a></div>
-        </div>
-        <div class="row border-bottom g-2">
-            <div class="col-2">Team</div>
-            <div class="col-10"><a class="nav-link" data-bind="text:'[' + TeamAcronym() + '] ' + TeamName(), attr: { href:'./teamDetails.html?id=' + TeamId }" title="Show Team Details"></a></div>
-        </div>
-        <div class="row border-bottom g-2">
-            <div class="col-2">Location</div><div class="col-10" data-bind="text: Location"></div>
-        </div>
-        <div class="row border-bottom g-2">
-            <div class="col-2">Capacity</div><div class="col-10" data-bind="text: Capacity"></div>
-        </div>-->
-        <!-- ko if:Opened().length > 0 -->
- 
-        <!-- /ko -->
+
         <div class="row border-bottom g-2" data-bind="visible: Photo() != '' && Photo() != null">
-            <div class="col-2">Photo</div><div class="small col-10">
+            <div class="small">
                 <img class="img-thumbnail" data-bind="attr:{src: Photo}"><br />
                 <i class="fa fa-link"></i> [<a class="link-dark text-decoration-none" data-bind="attr: { href: Photo }, text: Photo" target="_blank"></a>]
             </div>
         </div>
-        <!-- /ko -->
-        <a href="./arenas.html" class="btn btn-default btn-sm small"><i class="fa fa-list"></i> Back to List</a>
     </div>
+    <div class="container">
+        <a href="./players.html" class="btn btn-default btn-sm small"><i class="fa fa-list"></i> Back to List</a>
+        </div>
     <!-- Modal -->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
