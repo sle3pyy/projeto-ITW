@@ -70,9 +70,13 @@
         </div>
         <!-- /ko -->
         <div class="row border-bottom g-2" data-bind="visible: Photo() != '' && Photo() != null">
-            <div class="col-3"></div><div class="small col-9">
+            <div class="small col-6">
                 <img class="img-thumbnail" data-bind="attr:{src: Photo}"><br />
                 <i class="fa fa-link"></i> [<a class="link-dark text-decoration-none" data-bind="attr: { href: Photo }, text: Photo" target="_blank"></a>]
+            </div>
+            <div class="col-6">
+                <!-- ko if:Biography() != "null" -->
+                <p data-bind="html: Biography"></p>
             </div>
         </div>
         <!-- /ko -->
