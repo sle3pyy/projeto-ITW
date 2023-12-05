@@ -57,7 +57,7 @@ var vm = function () {
             self.currentPage(data.CurrentPage);
             self.hasNext(data.HasNext);
             self.hasPrevious(data.HasPrevious);
-            self.pagesize(data.PageSize)
+            self.pagesize(20)
             self.totalPages(data.TotalPages);
             self.totalRecords(data.TotalRecords)
                 //self.SetFavourites();

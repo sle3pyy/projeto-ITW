@@ -15,7 +15,7 @@ var vm = function () {
     self.hasPrevious = ko.observable(false);
     self.hasNext = ko.observable(false);
     
-    self.search = function() { 
+    self.search = function() { // mudar isto !!!!!!!!!!!!!
         console.log("searching")
         if ($("#searchb").val() === "") {
             showLoading();
@@ -27,7 +27,7 @@ var vm = function () {
                 self.activate(pg);
             }
         } else {
-            var Uri ='http://192.168.160.58/NBA/api/Teams/Search?q='+ $("#searchb").val();
+            var Uri ='http://192.168.160.58/NBA/api/Players/Search?q='+ $("#searchb").val();
             self.playerlist = [];
         ajaxHelper(Uri, 'GET').done(function(data) {
             console.log(data.length)
@@ -35,6 +35,7 @@ var vm = function () {
                 return alert('No results found')
             }
             self.totalPages(1)
+            
             console.log(data);
             showLoading();
             self.records(data);
@@ -46,6 +47,28 @@ var vm = function () {
             });
         };
     };
+    self.clean = function() { 
+        console.log("Clean")
+        $("#searchb").val('')
+            var Uri ='http://192.168.160.58/NBA/api/Players'
+            self.playerlist = [];
+            ajaxHelper(Uri, 'GET').done(function (data) {
+            console.log(data);
+            hideLoading();
+            self.records(data.Records);
+            self.currentPage(data.CurrentPage);
+            self.hasNext(data.HasNext);
+            self.hasPrevious(data.HasPrevious);
+            self.pagesize(20)
+            self.totalPages(data.TotalPages);
+            self.totalRecords(data.TotalRecords)
+                //self.SetFavourites();
+            });
+        };
+        self.onEnter = function(d,e) {
+            e.keyCode === 13 && self.search();
+            return true;
+        };
     
     self.previousPage = ko.computed(function () {
         return self.currentPage() * 1 - 1;
