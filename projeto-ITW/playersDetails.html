@@ -32,39 +32,39 @@
         </div>
     </nav>
     <!-- Work Area-->
-    <div class="container">
+    <div class="container card">
         <div class="py-2 mb-3">
             <h2>a</h2>
             <h2 class="centeri" style="color:whitesmoke"data-bind="text:Name() +' [' + Id() + ']'"></h2>
         </div>
         <!-- ko if:Name().length > 0 -->
         <div class="row g-2 ">
-            <div class="col-4 centeri card">Name
+            <div class="col-4 centeri ">Name
                 <p data-bind="text:Name"></p>
             </div>
-            <div class="col-4 centeri card">Birthdate
+            <div class="col-4 centeri ">Birthdate
                 <p data-bind="text: Birthdate"></p>
             </div>
-            <div class="col-4 centeri card">Country
+            <div class="col-4 centeri ">Country
                 <p data-bind="text: CountryName"></p>
             </div>
         </div>
         <div class="row g-2 ">
-            <div class="col-6 centeri card">Position
+            <div class="col-6 centeri ">Position
                 <p data-bind="text:PositionName"></p>
             </div>
-            <div class="col-6 centeri card">School
+            <div class="col-6 centeri ">School
                 <p data-bind="text: School"></p>
             </div>
         </div>
         <div class="row g-2 ">
-            <div class="col-4 centeri card">Draft year
+            <div class="col-4 centeri ">Draft year
                 <p data-bind="text:DraftYear"></p>
             </div>
-            <div class="col-4 centeri card">Height
+            <div class="col-4 centeri ">Height
                 <p data-bind="text: Height"></p>
             </div>
-            <div class="col-4 centeri card">Weight
+            <div class="col-4 centeri">Weight
                 <p data-bind="text: Weight"></p>
             </div>
         </div>
@@ -77,12 +77,15 @@
             <div class="col-6">
                 <!-- ko if:Biography() != "null" -->
                 <p data-bind="html: Biography"></p>
+                <!-- /ko -->
             </div>
         </div>
         <!-- /ko -->
+        </div>
+        <div class="container">
         <a href="./players.html" class="btn btn-default btn-sm small"><i class="fa fa-list"></i> Back to List</a>
-    </div>
-    <!-- Modal -->
+        </div>
+        <!-- Modal -->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
