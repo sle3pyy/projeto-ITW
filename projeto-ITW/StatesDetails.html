@@ -32,21 +32,22 @@
         </div>
     </nav>
     <!-- Work Area-->
-    <div class="container">
+    <div class="container card">
         <div class="py-2 border-bottom mb-3">
             <h3 data-bind="text:Season() +' [' + Id() + ']'"></h2>
             <h2 data-bind="text:Season() +' [' + Id() + ']'"></h2>
         </div>
         
         <div class="row g-2">
-            <div class="col-4 centeri card">Season
+            <div class="col-4 centeri ">Season
                 <p data-bind="text:Season"></p>
-        <div class="row border-bottom g-2">
-            <div class="col-2">Teams</div><div class="col-10"><a class="nav-link" data-bind=" attr: { href:'./teamsDetails.html?id=' + TId[0] }" title="Show State Details"></a></div>
+            </div>
+        <!--<div class="row border-bottom g-2">
+            <div class="col-2">Teams</div><div class="col-10"><a class="nav-link" data-bind=" attr: { href:'./teamsDetails.html?id=' + Teams()[0] }" title="Show State Details"></a></div>
         </div>
         <div class="row border-bottom g-2">
-            <div class="col-2">Players</div><div class="col-10"><a class="nav-link" data-bind=" attr: { href:'./playersDetails.html?id=' + PId[0] }" title="Show State Details"></a></div>
-        </div>
+            <div class="col-2">Players</div><div class="col-10"><a class="nav-link" data-bind=" attr: { href:'./playersDetails.html?id=' + Players()[0] }" title="Show State Details"></a></div>
+        </div>-->
         <!--<div class="row border-bottom g-2">
             <div class="col-2">Game Id</div><div class="col-10" data-bind="text: Id"></div>
         </div>
@@ -68,9 +69,9 @@
         </div>-->
        
         
-        
-        <a href="./States.html" class="btn btn-default btn-sm small"><i class="fa fa-list"></i> Back to List</a>
     </div>
+        <a href="./States.html" class="btn btn-default btn-sm small"><i class="fa fa-list"></i> Back to List</a>
+    
     <!-- Modal -->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">

@@ -74,6 +74,24 @@ var vm = function () {
             list.push(i + step);
         return list;
     };
+    self.clean = function() { 
+        console.log("Clean")
+        $("#searchb").val('')
+            var Uri ='http://192.168.160.58/NBA/api/Teams'
+            self.playerlist = [];
+            ajaxHelper(Uri, 'GET').done(function (data) {
+            console.log(data);
+            hideLoading();
+            self.records(data.Records);
+            self.currentPage(data.CurrentPage);
+            self.hasNext(data.HasNext);
+            self.hasPrevious(data.HasPrevious);
+            self.pagesize(data.PageSize)
+            self.totalPages(data.TotalPages);
+            self.totalRecords(data.TotalRecords)
+                //self.SetFavourites();
+            });
+        };
 
     //--- Page Events
     self.activate = function (id) {

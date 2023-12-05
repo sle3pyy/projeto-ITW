@@ -10,8 +10,8 @@ var vm = function () {
     //--- Data Record
     self.Id = ko.observable('');
     self.Season = ko.observable('');
-    self.TId = ko.observable('');
-    self.PId = ko.observable('');
+    self.Teams = ko.observable([]);
+    self.Players = ko.observable([]);
 
     //--- Page Events
     self.activate = function (id) {
@@ -22,9 +22,9 @@ var vm = function () {
             hideLoading();
             self.Id(data.Id);
             self.Season(data.Season)
-            self.TId(data.Teams);
+            self.Teams(data.Teams);
             console.log(self.Tid)
-            self.PId(data.Players);
+            self.Players(data.Players);
             
             
         });
