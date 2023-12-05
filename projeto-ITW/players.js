@@ -6,10 +6,8 @@ var vm = function () {
     var self = this;
     
     self.searchb = ko.observable('');
-
-    ; 
-    console.log("did it")
-    self.baseUri = ko.observable('http://192.168.160.58/NBA/api/Players')
+    console.log("did it");
+    self.baseUri = ko.observable('http://192.168.160.58/NBA/api/Players');
     self.displayName = 'NBA Players List';
     self.error = ko.observable('');
     self.passingMessage = ko.observable('');
@@ -62,7 +60,7 @@ var vm = function () {
             self.currentPage(data.CurrentPage);
             self.hasNext(data.HasNext);
             self.hasPrevious(data.HasPrevious);
-            self.pagesize(data.PageSize)
+            self.pagesize(20)
             self.totalPages(data.TotalPages);
             self.totalRecords(data.TotalRecords)
                 //self.SetFavourites();

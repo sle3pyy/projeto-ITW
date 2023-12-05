@@ -39,20 +39,7 @@
                 <h3>a</h3>
                 <h2 class="centeri" style="color:whitesmoke"data-bind="text:Name() +' [' + Id() + ']'"></h2>
                 
-            </div>
-            <div class="col-6 border-bottom py-2 mb-2">
-                <h3>a</h3>
-                <form style="float:right">
-                    <div class="input-group input-group-sm">
-                      <input type="text" data-bind="textInput: searchb" id="searchb" placeholder="pesquisar...">
-                      <div class="input-group-append">
-                        <button data-bind="click:search" class="btn btn-default btn-sm" title="Filtrar"><i class="fa fa-search small"></i></button>
-                        <a data-bind="click:clean" class="btn btn-default btn-sm" title="Limpar o filtro"><i class="fa fa-times"></i></a>
-                    </div>
-                    </div>
-                </form>    
-            </div>    
-            </div>
+            
         <!-- ko if:Name().length > 0 -->
         <div class="row g-2 ">
             <div class="col-4 centeri ">Name
@@ -96,7 +83,7 @@
                 <img class="img-thumbnail" data-bind="attr:{src: Photo}"><br />
             </div>
         </div>
-        <!-- /ko -->
+      
         </div>
         <div class="container">
         <a href="./players.html" class="btn btn-default btn-sm small"><i class="fa fa-list"></i> Back to List</a>
