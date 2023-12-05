@@ -32,7 +32,7 @@
         </div>
     </nav>
     <!-- Work Area-->
-    <div class="container">
+    <div class="container card">
         
             <div class="py-2 mb-3">
                 <h2>a</h2>
@@ -41,34 +41,37 @@
             <!-- ko if:Name().length > 0 -->
             <div class="row g-2 ">
                 <div class="col-6">
-                    <div class="centeri card ">Name
+                    <div class="centeri ">Name
                         <p data-bind="text:'[' + Acronym() + '] ' + Name()"></p>
                     </div>
-                    <div class="centeri card">Conference name
+                    <div class="centeri ">Conference name
                         <p data-bind="text: ConferenceName()"></p>
                     </div>
-                    <div class="centeri card">Location
+                    <div class="centeri ">Location
                         <p data-bind="text: DivisionName"></p>
                     </div>
-                    <div class="centeri card">State
+                    <div class="centeri ">State
                         <p data-bind="text:StateName"></p>
                     </div>
-                    <div class="centeri card">City
+                    <div class="centeri ">City
                         <p data-bind="text: City"></p>
                     </div>
                 </div>
                 
             <div class="col-6" >
                 <div data-bind="visible: Logo() != '' && Logo() != null">
-                    <img  class="img-thumbnail imgh" data-bind="attr:{src:Logo}"><br /> 
+                    <img  class="imgh" data-bind="attr:{src:Logo}"><br /> 
                 </div>  
             </div>
-            <div class="row card">
+            <div class="row ">
                 <div data-bind="html:History"></div>
             </div>
         </div>
         <!-- /ko -->
-        <a href="./Teams.html" class="btn btn-default btn-sm small"><i class="fa fa-list"></i> Back to List</a>
+        
+    </div>
+    <div class="container">
+    <a href="./Teams.html" class="btn btn-default btn-sm small"><i class="fa fa-list"></i> Back to List</a>
     </div>
     <!-- Modal -->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
