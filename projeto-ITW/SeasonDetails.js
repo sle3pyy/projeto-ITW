@@ -16,6 +16,7 @@ var vm = function () {
     self.activate = function (id) {
         console.log('CALL: getStates...');
         var composedUri = self.baseUri() + id;
+        console.log(composedUri)
         ajaxHelper(composedUri, 'GET').done(function (data) {
             console.log(data);
             hideLoading();
