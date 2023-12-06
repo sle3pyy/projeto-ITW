@@ -103,6 +103,7 @@ var vm = function () {
     self.activate = function (id) {
         console.log('CALL: getTeams...');
         var composedUri = self.baseUri() + "?page=" + id + "&pageSize=" + self.pagesize();
+        console.log(composedUri)
         ajaxHelper(composedUri, 'GET').done(function (data) {
             console.log(data);
             hideLoading();
