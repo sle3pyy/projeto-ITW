@@ -3,7 +3,7 @@ var vm = function () {
     console.log('ViewModel initiated...');
     //---Variáveis locais
     var self = this;
-    self.baseUri = ko.observable('http://192.168.160.58/NBA/API/Teams/');
+    self.baseUri = ko.observable('http://192.168.160.58/NBA/API/Seasons/');
     self.displayName = 'NBA Teams Details';
     self.error = ko.observable('');
     self.passingMessage = ko.observable('');
@@ -31,19 +31,8 @@ var vm = function () {
             console.log(data);
             hideLoading();
             self.Id(data.Id);
-            self.Acronym(data.Acronym);
-            self.Name(data.Name);
-            self.ConferenceId(data.ConferenceId);
-            self.ConferenceName(data.ConferenceName);
-            self.DivisionId(data.DivisionId);
-            self.DivisionName(data.DivisionName);
-            self.StateId(data.StateId);
-            self.StateName(data.StateName);
-            self.City(data.City);
-            self.Logo(data.Logo);
-            self.History(data.History);
-            self.Players(data.Players);
             
+            self.Players(data.Players);
         });
     };
 
@@ -95,13 +84,13 @@ var vm = function () {
 
     //--- start ....
     showLoading();
-    var ag= getUrlParameter('acronym');
+    
     var pg = getUrlParameter('id');
-    console.log(pg,ag);
+    console.log(pg);
     if (pg == undefined)
         self.activate(1);
     else {
-        self.activate(pg,ag);
+        self.activate(pg);
     }
     console.log("VM initialized!");
 };

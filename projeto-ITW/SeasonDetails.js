@@ -1,53 +1,31 @@
-// ViewModel KnockOut
+﻿// ViewModel KnockOut
 var vm = function () {
     console.log('ViewModel initiated...');
     //---Variáveis locais
     var self = this;
-    self.baseUri = ko.observable('http://192.168.160.58/NBA/API/Teams/');
-    self.displayName = 'NBA Teams Details';
+    self.baseUri = ko.observable('http://192.168.160.58/NBA/api/Seasons/');
+    self.displayName = 'NBA States Details';
     self.error = ko.observable('');
     self.passingMessage = ko.observable('');
     //--- Data Record
     self.Id = ko.observable('');
-    self.Acronym = ko.observable('')
-    self.Name = ko.observable('');
-    self.ConferenceId = ko.observable('');
-    self.ConferenceName = ko.observable('');
-    self.DivisionId = ko.observable('');
-    self.DivisionName = ko.observable('');
-    self.StateId = ko.observable('');
-    self.StateName = ko.observable('');
-    self.City = ko.observable('');
-    self.Logo = ko.observable('');
-    self.History = ko.observable('');
-    self.Players = ko.observable([]);
+    self.Season = ko.observable('');
+    
 
     //--- Page Events
-    self.activate = function (id,acronym) {
-        console.log('CALL: getTeam...');
-        var composedUri = self.baseUri() + id + '?acronym=' + acronym;
-        console.log(composedUri);
+    self.activate = function (id) {
+        console.log('CALL: getStates...');
+        var composedUri = self.baseUri() + id;
         ajaxHelper(composedUri, 'GET').done(function (data) {
             console.log(data);
             hideLoading();
             self.Id(data.Id);
-            self.Acronym(data.Acronym);
-            self.Name(data.Name);
-            self.ConferenceId(data.ConferenceId);
-            self.ConferenceName(data.ConferenceName);
-            self.DivisionId(data.DivisionId);
-            self.DivisionName(data.DivisionName);
-            self.StateId(data.StateId);
-            self.StateName(data.StateName);
-            self.City(data.City);
-            self.Logo(data.Logo);
-            self.History(data.History);
-            self.Players(data.Players);
+            self.Season(data.Season)
+            
             
         });
     };
 
-  
     //--- Internal functions
     function ajaxHelper(uri, method, data) {
         self.error(''); // Clear error message
@@ -87,7 +65,6 @@ var vm = function () {
             sParameterName = sURLVariables[i].split('=');
 
             if (sParameterName[0] === sParam) {
-
                 return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
             }
         }
@@ -95,13 +72,12 @@ var vm = function () {
 
     //--- start ....
     showLoading();
-    var ag= getUrlParameter('acronym');
     var pg = getUrlParameter('id');
-    console.log(pg,ag);
+    console.log(pg);
     if (pg == undefined)
         self.activate(1);
     else {
-        self.activate(pg,ag);
+        self.activate(pg);
     }
     console.log("VM initialized!");
 };
