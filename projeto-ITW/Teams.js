@@ -182,6 +182,37 @@ var vm = function () {
 $(document).ready(function () {
     console.log("ready!");
     ko.applyBindings(new vm());
+    $("#searchb").autocomplete({
+        minLength: 1,
+        autoFill: true,
+        source: function (request, response) {
+            $.ajax({
+                type: 'GET',
+                url: 'http://192.168.160.58/NBA/api/Teams/Search?q='+ $("#searchb").val(),
+                success: function (data) {
+                    response($.map(data, function (item) {
+                        return item.Name;
+                    }));
+                },
+                error: function(result) {
+                    alert(result.statusText);
+                },
+            });
+        },
+        select: function (e, ui) {
+            $.ajax({
+                type: 'GET',
+                url: 'http://192.168.160.58/NBA/api/Teams/Search?q=' + ui.item.label,
+                success: function (data) {
+                    window.location = 'teamDetails.html?id=' + data[0].Id +'&acronym=' + data[0].Acronym;
+                }
+            })
+        },
+        messages: {
+            noResults: '',
+            results: function() {}
+        }
+    });
 });
 
 $(document).ajaxComplete(function (event, xhr, options) {
