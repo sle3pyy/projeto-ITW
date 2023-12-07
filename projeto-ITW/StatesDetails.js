@@ -23,7 +23,7 @@ var vm = function () {
             self.Id(data.Id);
             self.Season(data.Season)
             self.Teams(data.Teams);
-            console.log(self.Tid)
+            
             self.Players(data.Players);
             
             
