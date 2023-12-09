@@ -17,7 +17,7 @@ var vm = function () {
     self.totalRecords = ko.observable(50);
     self.hasPrevious = ko.observable(false);
     self.hasNext = ko.observable(false);
-    self.search = function() { // mudar isto !!!!!!!!!!!!!
+    self.search = function() {
         console.log("searching")
         if ($("#searchb").val() === "") {
             showLoading();

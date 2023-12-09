@@ -57,11 +57,11 @@ var vm = function () {
                 var playersList = [];
                 var favPlayersList = JSON.parse(window.localStorage.getItem('favPlayers0'));
                 var a = favPlayersList.length;
-                console.log(favPlayersList,a,data[0])
-                for (var i = 0; i < 4436; i++) {
+                console.log(favPlayersList,data.TotalRecords)
+                for (var i = 0; i < 50; i++) {
                     for (var k = 0; k < a; k++) {
-                        if (favPlayersList[k] == data[i].Id) {
-                            playersList.push(data.List[i])
+                        if (favPlayersList[k] == data.Records[i].Id) {
+                            playersList.push(data.Records[i])
                         }
                     }
                 }
