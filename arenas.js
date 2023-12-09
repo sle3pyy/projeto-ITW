@@ -15,6 +15,10 @@ var vm = function () {
     self.hasPrevious = ko.observable(false);
     self.hasNext = ko.observable(false);
     
+    
+    self.FavId = function(Id){ 
+        console.log('favourite_' + Id)
+        $("#favourite_" + Id).classList.toggle('text-danger')}
     self.search = function() { 
         console.log("searching")
         if ($("#searchb").val() === "") {
@@ -113,7 +117,7 @@ var vm = function () {
             self.totalPages(data.TotalPages);
             self.totalRecords(data.TotalRecords);
             
-            //self.SetFavourites();
+            
         });
     };
 
