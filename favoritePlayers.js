@@ -125,22 +125,29 @@ var vm = function () {
     
     
     //--- Page Events
-    self.activate = function (id) {
-        console.log('CALL: getArenas...');
-        var composedUri = self.baseUri() + "?page=" + id + "&pageSize=" + self.pagesize();
+    self.activate = function () {
+        console.log('CALL: getPlayers...');
+        var composedUri = self.baseUri();
         ajaxHelper(composedUri, 'GET').done(function (data) {
             console.log(data);
+            if (JSON.parse(window.localStorage.getItem('favPlayers0')) == null) {
+                self.records(null)
+            } else {
+                console.log('checking which Players were favourited')
+                var playersList = [];
+                var favPlayersList = JSON.parse(window.localStorage.getItem('favPlayers0'));
+                for (var i = 0; i < data.List.length; i++) {
+                    for (var k = 0; k < favPlayersList.length; k++) {
+                        if (favPlayerList[k] == data.List[i].Id) {
+                            playersList.push(data.List[i])
+                        }
+                    }
+                }
+                self.records(playersList)
+            }
             hideLoading();
-            self.records(data.Records);
-            self.currentPage(data.CurrentPage);
-            self.hasNext(data.HasNext);
-            self.hasPrevious(data.HasPrevious);
-            self.pagesize(data.PageSize)
-            self.totalPages(data.TotalPages);
-            self.totalRecords(data.TotalRecords);
-            //self.SetFavourites();
-            
         });
+        console.log(self.records())
     };
 
     //--- Internal functions
@@ -239,6 +246,12 @@ $(document).ready(function () {
             results: function() {}
         }
     });
+    $("#clearFavourites").click(function() {
+        if (!(JSON.parse(window.localStorage.getItem('favPlayers0')) == null)) {
+            window.localStorage.clear()
+            window.location.reload()
+        } else {
+            alert("No favourites to clear")
+        }
+    });
 });
-
-
