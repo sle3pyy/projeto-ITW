@@ -48,7 +48,7 @@ var vm = function () {
         console.log('CALL: getPlayers...');
         var composedUri = self.baseUri();
         ajaxHelper(composedUri, 'GET').done(function (data) {
-            console.log(data);
+            //console.log(data);
             console.log(composedUri);
             if (JSON.parse(window.localStorage.getItem('favPlayers0')) == null) {
                 self.records(null)
@@ -57,10 +57,10 @@ var vm = function () {
                 var playersList = [];
                 var favPlayersList = JSON.parse(window.localStorage.getItem('favPlayers0'));
                 var a = favPlayersList.length;
-                console.log(favPlayersList,a)
+                console.log(favPlayersList,a,data[0])
                 for (var i = 0; i < 4436; i++) {
                     for (var k = 0; k < a; k++) {
-                        if (favPlayersList[k] == data.List[i].Id) {
+                        if (favPlayersList[k] == data[i].Id) {
                             playersList.push(data.List[i])
                         }
                     }
