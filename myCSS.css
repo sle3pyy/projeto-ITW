@@ -57,3 +57,16 @@ li.page-item a {
     width: 63vh;
     height: 34vh;   
 }
+.navbar-nav, .pagination{
+    background-color: transparent;
+    border: 0px;
+    width: auto;
+}
+ul{
+    list-style-type: none;
+    background-color: white;
+    border: 1px solid;
+    width: 10%;
+    padding: 0px 2px 0px 2px;
+    text-align: left;
+}
