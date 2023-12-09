@@ -8,16 +8,11 @@ var vm = function () {
     self.searchb = ko.observable('');
     console.log("did it");
     self.baseUri = ko.observable('http://192.168.160.58/NBA/api/Players');
-    self.displayName = 'NBA Players List';
+    self.displayName = 'NBA Favorite Players List';
     self.error = ko.observable('');
     self.passingMessage = ko.observable('');
     self.records = ko.observableArray([]);
-    self.currentPage = ko.observable(1);
-    self.pagesize = ko.observable(20);
-    self.totalRecords = ko.observable(50);
-    self.hasPrevious = ko.observable(false);
-    self.hasNext = ko.observable(false);
-    self.search = function() { // mudar isto !!!!!!!!!!!!!
+    self.search = function() {
         console.log("searching")
         if ($("#searchb").val() === "") {
             showLoading();
@@ -48,97 +43,24 @@ var vm = function () {
             });
         };
     };
-    self.clean = function() { 
-        console.log("Clean")
-        $("#searchb").val('')
-            var Uri ='http://192.168.160.58/NBA/api/Players'
-            self.playerlist = [];
-            ajaxHelper(Uri, 'GET').done(function (data) {
-            console.log(data);
-            hideLoading();
-            self.records(data.Records);
-            self.currentPage(data.CurrentPage);
-            self.hasNext(data.HasNext);
-            self.hasPrevious(data.HasPrevious);
-            self.pagesize(20)
-            self.totalPages(data.TotalPages);
-            self.totalRecords(data.TotalRecords)
-                //self.SetFavourites();
-            });
-        };
-        self.onEnter = function(d,e) {
-            e.keyCode === 13 && self.search();
-            return true;
-        };
-        self.favoritePlayer = function (id, event) {
-            console.log('favourite click!')
-            if (JSON.parse(window.localStorage.getItem('favPlayers0')) == null) {
-                console.log('no favPlayers in local storage, lets create it');
-                window.localStorage.setItem('favPlayers0', '[]');
-                var a = JSON.parse(window.localStorage.getItem('favPlayers0'));
-                b = a.concat([id]);
-                window.localStorage.setItem('favPlayers0', JSON.stringify(b));
-            } else {
-                var c = JSON.parse(window.localStorage.getItem('favPlayers0'))
-                for (var i = 0; i < c.length; i++) {
-                    if (id == c[i]) {
-                        return false
-                    }
-                }
-                var a = JSON.parse(window.localStorage.getItem('favPlayers0'));
-                b = a.concat([id]);
-                window.localStorage.setItem('favPlayers0', JSON.stringify(b));
-                console.log('Player not favourited, added to favourites')
-            }
-            console.log(JSON.parse(window.localStorage.getItem('favPlayers0')))
-        }
-    self.previousPage = ko.computed(function () {
-        return self.currentPage() * 1 - 1;
-    }, self);
-    self.nextPage = ko.computed(function () {
-        return self.currentPage() * 1 + 1;
-    }, self);
-    self.fromRecord = ko.computed(function () {
-        return self.previousPage() * self.pagesize() + 1;
-    }, self);
-    self.toRecord = ko.computed(function () {
-        return Math.min(self.currentPage() * self.pagesize(), self.totalRecords());
-    }, self);
-    self.totalPages = ko.observable(0);
-    self.pageArray = function () {
-        var list = [];
-        var size = Math.min(self.totalPages(), 9);
-        var step;
-        if (size < 9 || self.currentPage() === 1)
-            step = 0;
-        else if (self.currentPage() >= self.totalPages() - 4)
-            step = self.totalPages() - 9;
-        else
-            step = Math.max(self.currentPage() - 5, 0);
-
-        for (var i = 1; i <= size; i++)
-            list.push(i + step);
-        return list;
-        
-    };
-   
-    
-    
     //--- Page Events
     self.activate = function () {
         console.log('CALL: getPlayers...');
         var composedUri = self.baseUri();
         ajaxHelper(composedUri, 'GET').done(function (data) {
             console.log(data);
+            console.log(composedUri);
             if (JSON.parse(window.localStorage.getItem('favPlayers0')) == null) {
                 self.records(null)
             } else {
                 console.log('checking which Players were favourited')
                 var playersList = [];
                 var favPlayersList = JSON.parse(window.localStorage.getItem('favPlayers0'));
-                for (var i = 0; i < data.List.length; i++) {
-                    for (var k = 0; k < favPlayersList.length; k++) {
-                        if (favPlayerList[k] == data.List[i].Id) {
+                var a = favPlayersList.length;
+                console.log(favPlayersList,a)
+                for (var i = 0; i < 4436; i++) {
+                    for (var k = 0; k < a; k++) {
+                        if (favPlayersList[k] == data.List[i].Id) {
                             playersList.push(data.List[i])
                         }
                     }
