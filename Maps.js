@@ -20,6 +20,15 @@
             });
         });
 });
+function initMap() {
+ var map;
+ map = new google.maps.Map(document.getElementById('map'), {
+ center: { lat: 40.6413266, lng: 8.653632099999982 },
+ zoom: 12
+ });
+ }
+ 
+ 
 
 //--- Internal functions
 function ajaxHelper(uri, method, data) {
