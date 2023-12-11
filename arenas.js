@@ -68,7 +68,7 @@ var vm = function () {
             e.keyCode === 13 && self.search();
             return true;
         }; 
-        self.favoriteArenas = function (id, event) {
+        self.favoriteArenas = function (id) {
             console.log('favourite click!')
             $('#fav_'+id).addClass('text-danger')
             if (JSON.parse(window.localStorage.getItem('favArenas0')) == null) {
@@ -147,8 +147,6 @@ var vm = function () {
                 $('#fav_'+a[i].Id).addClass('text-danger')
                 };
             }}
-            
-            
         });
     };
 
