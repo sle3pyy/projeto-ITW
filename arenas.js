@@ -140,6 +140,13 @@ var vm = function () {
             self.pagesize(data.PageSize)
             self.totalPages(data.TotalPages);
             self.totalRecords(data.TotalRecords);
+            a = JSON.parse(window.localStorage.getItem('favArenas0'));
+            for (var i = 0; i < a.length; i++) {
+                for(var j=0;j<self.records().length;j++){
+                if(a[i].Id==self.records()[j].Id){
+                $('#fav_'+a[i].Id).addClass('text-danger')
+                };
+            }}
             
             
         });
