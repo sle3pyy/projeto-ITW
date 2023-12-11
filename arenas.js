@@ -70,6 +70,7 @@ var vm = function () {
         }; 
         self.favoriteArenas = function (id, event) {
             console.log('favourite click!')
+            $('#fav_'+id).addClass('text-danger')
             if (JSON.parse(window.localStorage.getItem('favArenas0')) == null) {
                 console.log('no favArenas in local storage, lets create it');
                 window.localStorage.setItem('favArenas0', '[]');
@@ -77,6 +78,7 @@ var vm = function () {
                 b = a.concat([id]);
                 console.log(b)
                 window.localStorage.setItem('favArenas0', JSON.stringify(b));
+                
             } else {
                 var c = JSON.parse(window.localStorage.getItem('favArenas0'))
                 for (var i = 0; i < c.length; i++) {
