@@ -17,6 +17,8 @@ var vm = function () {
     self.totalRecords = ko.observable(50);
     self.hasPrevious = ko.observable(false);
     self.hasNext = ko.observable(false);
+    ko.favorites = ko.observableArray([]);
+    
     self.search = function() {
         console.log("searching")
         if ($("#searchb").val() === "") {
@@ -72,11 +74,15 @@ var vm = function () {
         };
         self.favoritePlayer = function (id, event) {
             console.log('favourite click!')
+            $('#fav_'+id).addClass('text-danger')
             if (JSON.parse(window.localStorage.getItem('favPlayers0')) == null) {
                 console.log('no favPlayers in local storage, lets create it');
                 window.localStorage.setItem('favPlayers0', '[]');
                 var a = JSON.parse(window.localStorage.getItem('favPlayers0'));
-                b = a.concat([id]);
+                for(var i=0;i<self.records().length;i++){
+                    if(self.records()[i].Id == id){
+                    b = a.concat(self.records()[i]);
+                }}
                 window.localStorage.setItem('favPlayers0', JSON.stringify(b));
             } else {
                 var c = JSON.parse(window.localStorage.getItem('favPlayers0'))
@@ -86,7 +92,10 @@ var vm = function () {
                     }
                 }
                 var a = JSON.parse(window.localStorage.getItem('favPlayers0'));
-                b = a.concat([id]);
+                for(var i=0;i<self.records().length;i++){
+                    if(self.records()[i].Id == id){
+                    b = a.concat(self.records()[i]);
+                }}
                 window.localStorage.setItem('favPlayers0', JSON.stringify(b));
                 console.log('Player not favourited, added to favourites')
             }
@@ -132,12 +141,20 @@ var vm = function () {
             console.log(data);
             hideLoading();
             self.records(data.Records);
+            console.log(self.records())
             self.currentPage(data.CurrentPage);
             self.hasNext(data.HasNext);
             self.hasPrevious(data.HasPrevious);
             self.pagesize(data.PageSize)
             self.totalPages(data.TotalPages);
             self.totalRecords(data.TotalRecords);
+            a = JSON.parse(window.localStorage.getItem('favPlayers0'));
+            for (var i = 0; i < a.length; i++) {
+                for(var j=0;j<self.records().length;j++){
+                if(a[i].Id==self.records()[j].Id){
+                $('#fav_'+a[i].Id).addClass('text-danger')
+                };
+            }}
             //self.SetFavourites();
             
         });
