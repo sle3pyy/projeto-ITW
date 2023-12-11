@@ -75,10 +75,11 @@ var vm = function () {
                 console.log('no favArenas in local storage, lets create it');
                 window.localStorage.setItem('favArenas0', '[]');
                 var a = JSON.parse(window.localStorage.getItem('favArenas0'));
-                b = a.concat([id]);
-                console.log(b)
-                window.localStorage.setItem('favArenas0', JSON.stringify(b));
-                
+                for(var i=0;i<self.records().length;i++){
+                    if(self.records()[i].Id == id){
+                    b = a.concat(self.records()[i]);
+                }}
+                window.localStorage.setItem('favArenas0', JSON.stringify(b)); 
             } else {
                 var c = JSON.parse(window.localStorage.getItem('favArenas0'))
                 for (var i = 0; i < c.length; i++) {
@@ -87,7 +88,10 @@ var vm = function () {
                     }
                 }
                 var a = JSON.parse(window.localStorage.getItem('favArenas0'));
-                b = a.concat([id]);
+                for(var i=0;i<self.records().length;i++){
+                    if(self.records()[i].Id == id){
+                    b = a.concat(self.records()[i]);
+                }}
                 window.localStorage.setItem('favArenas0', JSON.stringify(b));
                 console.log('Arena not favourited, added to favourites')
             }

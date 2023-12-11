@@ -12,37 +12,8 @@ var vm = function () {
     self.error = ko.observable('');
     self.passingMessage = ko.observable('');
     self.records = ko.observableArray([]);
-    self.search = function() {
-        console.log("searching")
-        if ($("#searchb").val() === "") {
-            showLoading();
-            var pg = getUrlParameter('page');
-            console.log(pg);
-            if (pg == undefined)
-                self.activate(1);
-            else {
-                self.activate(pg);
-            }
-        } else {
-            var Uri ='http://192.168.160.58/NBA/api/Players/Search?q='+ $("#searchb").val();
-            self.playerlist = [];
-        ajaxHelper(Uri, 'GET').done(function(data) {
-            console.log(data.length)
-            if (data.length == 0) {
-                return alert('No results found')
-            }
-            self.totalPages(1)
-            console.log(data);
-            showLoading();
-            self.records(data);
-            self.totalRecords(data.length);
-            hideLoading();
-            for (var i in data) {
-                self.playerlist.push(data[i]);
-                }
-            });
-        };
-    };
+
+    
     //--- Page Events
     self.activate = function () {
         console.log('CALL: getPlayers...');
@@ -57,13 +28,10 @@ var vm = function () {
                 var playersList = [];
                 var favPlayersList = JSON.parse(window.localStorage.getItem('favPlayers0'));
                 var a = favPlayersList.length;
-                console.log(favPlayersList,data.TotalRecords)
-                for (var i = 0; i < 50; i++) {
-                    for (var k = 0; k < a; k++) {
-                        if (favPlayersList[k] == data.Records[i].Id) {
-                            playersList.push(data.Records[i])
-                        }
-                    }
+                console.log(a,favPlayersList)
+                for (var i = 0; i < a; i++) {
+                    console.log(favPlayersList[i])
+                    playersList.push(favPlayersList[i])
                 }
                 self.records(playersList)
             }
@@ -137,37 +105,6 @@ var vm = function () {
 $(document).ready(function () {
     console.log("ready!");
     ko.applyBindings(new vm());
-    $("#searchb").autocomplete({
-        minLength: 1,
-        autoFill: true,
-        source: function (request, response) {
-            $.ajax({
-                type: 'GET',
-                url: 'http://192.168.160.58/NBA/api/Players/Search?q='+ $("#searchb").val(),
-                success: function (data) {
-                    response($.map(data, function (item) {
-                        return item.Name;
-                    }));
-                },
-                error: function(result) {
-                    alert(result.statusText);
-                },
-            });
-        },
-        select: function (e, ui) {
-            $.ajax({
-                type: 'GET',
-                url: 'http://192.168.160.58/NBA/api/Players/Search?q=' + ui.item.label,
-                success: function (data) {
-                    window.location = 'playersDetails.html?id=' + data[0].Id;
-                }
-            })
-        },
-        messages: {
-            noResults: '',
-            results: function() {}
-        }
-    });
     $("#clearFavourites").click(function() {
         if (!(JSON.parse(window.localStorage.getItem('favPlayers0')) == null)) {
             window.localStorage.clear()
