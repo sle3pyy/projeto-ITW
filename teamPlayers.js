@@ -21,6 +21,35 @@ var vm = function () {
     self.Logo = ko.observable('');
     self.History = ko.observable('');
     self.Players = ko.observable([]);
+    self.favoritePlayer = function (id, event) {
+        console.log('favourite click!')
+        $('#fav_'+id).addClass('text-danger')
+        if (JSON.parse(window.localStorage.getItem('favPlayers0')) == null) {
+            console.log('no favPlayers in local storage, lets create it');
+            window.localStorage.setItem('favPlayers0', '[]');
+            var a = JSON.parse(window.localStorage.getItem('favPlayers0'));
+            for(var i=0;i<self.Players().length;i++){
+                if(self.Players()[i].Id == id){
+                b = a.concat(self.Players()[i]);
+            }}
+            window.localStorage.setItem('favPlayers0', JSON.stringify(b));
+        } else {
+            var c = JSON.parse(window.localStorage.getItem('favPlayers0'))
+            for (var i = 0; i < c.length; i++) {
+                if (id == c[i]) {
+                    return false
+                }
+            }
+            var a = JSON.parse(window.localStorage.getItem('favPlayers0'));
+            for(var i=0;i<self.Players().length;i++){
+                if(self.Players()[i].Id == id){
+                b = a.concat(self.Players()[i]);
+            }}
+            window.localStorage.setItem('favPlayers0', JSON.stringify(b));
+            console.log('Player not favourited, added to favourites')
+        }
+        console.log(JSON.parse(window.localStorage.getItem('favPlayers0')))
+    }
 
     //--- Page Events
     self.activate = function (id,acronym) {
@@ -43,6 +72,13 @@ var vm = function () {
             self.Logo(data.Logo);
             self.History(data.History);
             self.Players(data.Players);
+            a = JSON.parse(window.localStorage.getItem('favPlayers0'));
+            for (var i = 0; i < a.length; i++) {
+                for(var j=0;j<self.Players().length;j++){
+                if(a[i].Id==self.Players()[j].Id){
+                $('#fav_'+a[i].Id).addClass('text-danger')
+                };
+            }}
         });
     };
 

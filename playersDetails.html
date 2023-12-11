@@ -102,7 +102,7 @@
                     <th>Teams Played for</th>
                     <tbody data-bind="foreach: Teams">
                     <tr>
-                        <td data-bind="text: Name +' [' + Acronym + ']'"></td>
+                        <td><a class="nav-link" data-bind="text:'[' + Acronym + '] ' + Name, attr: { href:'./teamDetails.html?id=' + Id + '&acronym=' + Acronym}" title="Show Team Details"></a></td>
                     </tr>
                 </tbody>
             </table>
