@@ -37,7 +37,7 @@ var vm = function () {
             self.Name(data.Name);
             self.CountryId(data.CountryId);
             self.CountryName(data.CountryName);
-            self.Birthdate(data.Birthdate);
+            self.Birthdate(data.Birthdate.substring(0,10));
             self.PositionName(data.PositionName);
             self.PositionId(data.PositionId);
             self.DraftYear(data.DraftYear);
