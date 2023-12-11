@@ -58,12 +58,8 @@ var vm = function () {
                 var favArenasList = JSON.parse(window.localStorage.getItem('favArenas0'));
                 var a = favArenasList.length;
                 console.log(favArenasList,data.TotalRecords)
-                for (var i = 0; i < data.TotalRecords; i++) {
-                    for (var k = 0; k < a; k++) {
-                        if (favArenasList[k] == data.Records[i].Id) {
-                            arenasList.push(data.Records[i])
-                        }
-                    }
+                for (var i = 0; i < a; i++) {
+                            arenasList.push(favArenasList[i])
                 }
                 self.records(arenasList)
             }
