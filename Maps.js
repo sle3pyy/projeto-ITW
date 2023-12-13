@@ -16,7 +16,7 @@
             console.log(data);
             $.each(data.Records, function (index, record) {
                 L.marker([record.Lat, record.Lon]).addTo(map)
-                    .bindPopup(record.Name + '<br>' + record.CityName + " (" + record.CountryName + ")<br><a class=\"text-dark text-decoration-none\" href =\"./GameDetails?id=" + record.Id+"\"><span class=\"text-danger\">&rarr;</span> Ver Jogos</a>");
+                    .bindPopup(record.Name + '<br>' + record.StateName + " (" + record.TeamName + ")<br><a class=\"text-dark text-decoration-none\" href =\"./arenaDetails.html?id=" + record.Id+"\"><span class=\"text-danger\">&rarr;</span> Ver Arena</a>");
             });
         });
 });
