@@ -10,7 +10,7 @@
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
 
-    var composedUri = "http://192.168.160.58/Olympics/api/Games?page=1&pagesize=100";
+    var composedUri = "http://192.168.160.58/NBA/api/Arenas";
     ajaxHelper(composedUri, 'GET')
         .done(function (data) {
             console.log(data);
@@ -20,14 +20,7 @@
             });
         });
 });
-function initMap() {
- var map;
- map = new google.maps.Map(document.getElementById('map'), {
- center: { lat: 40.6413266, lng: 8.653632099999982 },
- zoom: 12
- });
- }
- 
+
  
 
 //--- Internal functions
