@@ -27,7 +27,6 @@ var vm = function () {
             }
         } else {
             var Uri ='http://192.168.160.58/NBA/api/Arenas/Search?q='+ $("#searchb").val();
-            self.arenaslist = [];
         ajaxHelper(Uri, 'GET').done(function(data) {
             console.log(data.length)
             if (data.length == 0) {
@@ -39,9 +38,6 @@ var vm = function () {
             self.records(data);
             self.totalRecords(data.length);
             hideLoading();
-            for (var i in data) {
-                self.arenaslist.push(data[i]);
-                } 
             });
         };
     };
@@ -60,15 +56,13 @@ var vm = function () {
             self.pagesize(20)
             self.totalPages(data.TotalPages);
             self.totalRecords(data.TotalRecords)
-            
-                //self.SetFavourites();
             });
         };
         self.onEnter = function(d,e) {
             e.keyCode === 13 && self.search();
             return true;
         }; 
-        self.favoriteArenas = function (id, event) {
+        self.favoriteArenas = function (id) {
             console.log('favourite click!')
             $('#fav_'+id).addClass('text-danger')
             if (JSON.parse(window.localStorage.getItem('favArenas0')) == null) {
@@ -147,8 +141,6 @@ var vm = function () {
                 $('#fav_'+a[i].Id).addClass('text-danger')
                 };
             }}
-            
-            
         });
     };
 
