@@ -33,15 +33,16 @@
     </nav>
     <!-- Work Area-->
     <div class="container card">
-        <div class="py-2 border-bottom mb-3">
-            <h3 data-bind="text:Season() +' [' + Id() + ']'"></h2>
-            <h2 data-bind="text:Season() +' [' + Id() + ']'"></h2>
+        <div class="py-2 border-bottom mb-3 centeri">
+            <h3 data-bind="text:Name() +' [' + Id() + ']'"></h2>
+            <h2 data-bind="text:Name() +' [' + Id() + ']'"></h2>
         </div>
         
-        <div class="row g-2">
-            <div class="col-4 centeri ">Season
-                <p data-bind="text:Season"></p>
-            </div>
+            <div class="row g-2">
+                <div class="col-4 centeri ">
+                    <img class="img-thumbnail" data-bind="attr:{src: Flag}"><br />
+                </div> 
+            
         <!-- <div class="row border-bottom g-2">
             <div class="col-2"></div><a class="nav-link" data-bind=" attr: { href:'./teamsDetails.html?id=' + Teams() }" title="Show State Details">Teams</a>
         </div>
@@ -70,8 +71,9 @@
        
         
     </div>
+    <div class="container">
         <a href="./States.html" class="btn btn-default btn-sm small"><i class="fa fa-list"></i> Back to List</a>
-    
+    </div>
     <!-- Modal -->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">

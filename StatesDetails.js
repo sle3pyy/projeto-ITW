@@ -9,24 +9,24 @@ var vm = function () {
     self.passingMessage = ko.observable('');
     //--- Data Record
     self.Id = ko.observable('');
-    self.Season = ko.observable('');
+    self.Name = ko.observable('');
+    self.Flag = ko.observable('');
+    self.Arenas = ko.observable([]);
     self.Teams = ko.observable([]);
-    self.Players = ko.observable([]);
 
     //--- Page Events
     self.activate = function (id) {
         console.log('CALL: getStates...');
         var composedUri = self.baseUri() + id;
+        console.log(composedUri)
         ajaxHelper(composedUri, 'GET').done(function (data) {
             console.log(data);
             hideLoading();
             self.Id(data.Id);
-            self.Season(data.Season)
+            self.Arenas(data.Arenas)
             self.Teams(data.Teams);
-            
-            self.Players(data.Players);
-            
-            
+            self.Name(data.Name);
+            self.Flag(data.Flag); 
         });
     };
 
