@@ -21,6 +21,7 @@ var vm = function () {
     self.Logo = ko.observable('');
     self.History = ko.observable('');
     self.Players = ko.observable([]);
+    self.Seasons = ko.observable([]);
 
     //--- Page Events
     self.activate = function (id,acronym) {
@@ -43,6 +44,7 @@ var vm = function () {
             self.Logo(data.Logo);
             self.History(data.History);
             self.Players(data.Players);
+            self.Seasons(data.Seasons);
             
         });
     };

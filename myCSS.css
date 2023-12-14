@@ -72,3 +72,11 @@ ul{
     text-align: left;
     z-index: 1000;
 }
+a {
+    color: whitesmoke;
+    text-decoration: none;
+}
+a:hover {
+    color: grey;
+}
+

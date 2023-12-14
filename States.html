@@ -100,10 +100,14 @@
                     <td class="align-middle">
                         <div class="row border-bottom g-2" data-bind="visible: Flag != '' && Flag != null">
                            <div class="small col-10">
-                                
-                               <i class="fa fa-flag-o "></i>
+                            <img style="height:30px; width:30px"data-bind="attr:{src: Flag}"><br />
                             </div>
                         </div>
+                        <div class="row border-bottom g-2" data-bind="visible: Flag == '' || Flag == null">
+                            <div class="small col-10">
+                             <img style="height:30px; width:30px"src="https://i.pngimg.me/thumb/f/720/m2i8K9d3m2K9N4A0.jpg"><br />
+                             </div>
+                         </div>
                     </td>
 
                     <td class="text-end">
