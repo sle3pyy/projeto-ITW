@@ -98,7 +98,12 @@
                 <tr>
                     <td class="align-middle" data-bind="text:Id"></td>
                     <td class="align-middle" data-bind="text:Name"></td>
+                    <!-- ko if: Birthdate != null -->
                     <td class="align-middle" data-bind="text:Birthdate.substring(0,10)"></td>
+                    <!-- /ko -->
+                    <!-- ko if: Birthdate == null-->
+                    <td class="align-middle" data-bind="text:Birthdate"></td>
+                    <!-- /ko -->
                     <td class="align-middle" data-bind="text:CountryName"></td>
                     <td class="align-middle" data-bind="text:PositionName"></td>
                     <td class="align-middle" data-bind="text:Height"></td>
