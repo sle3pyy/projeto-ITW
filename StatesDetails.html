@@ -38,38 +38,26 @@
             <h2 data-bind="text:Name() +' [' + Id() + ']'"></h2>
         </div>
         
-            <div class="row g-2">
+            <div class="row g-2" >
                 <div class="col-4 centeri ">
                     <img class="img-thumbnail" data-bind="attr:{src: Flag}"><br />
-                </div> 
-            
-        <!-- <div class="row border-bottom g-2">
-            <div class="col-2"></div><a class="nav-link" data-bind=" attr: { href:'./teamsDetails.html?id=' + Teams() }" title="Show State Details">Teams</a>
-        </div>
-        <div class="row border-bottom g-2">
-            <div class="col-2" ><a class="nav-link" data-bind=" attr: { href:'./playersDetails.html?id=' + Players() }" title="Show State Details">Players</a></div><div class="col-10"></div>
-        </div> -->
-        <!--<div class="row border-bottom g-2">
-            <div class="col-2">Game Id</div><div class="col-10" data-bind="text: Id"></div>
-        </div>
-        <div class="row border-bottom g-2">
-            <div class="col-2">Name</div><div class="col-10" data-bind="text: Name"></div>
-        </div>
-        <div class="row border-bottom g-2">
-            <div class="col-2">State</div><div class="col-10"><a class="nav-link" data-bind="text:StateName, attr: { href:'./stateDetails.html?id=' + StateId }" title="Show State Details"></a></div>
-        </div>
-        <div class="row border-bottom g-2">
-            <div class="col-2">Team</div>
-            <div class="col-10"><a class="nav-link" data-bind="text:'[' + TeamAcronym() + '] ' + TeamName(), attr: { href:'./teamDetails.html?id=' + TeamId }" title="Show Team Details"></a></div>
-        </div>
-        <div class="row border-bottom g-2">
-            <div class="col-2">Location</div><div class="col-10" data-bind="text: Location"></div>
-        </div>
-        <div class="row border-bottom g-2">
-            <div class="col-2">Capacity</div><div class="col-10" data-bind="text: Capacity"></div>
-        </div>-->
-       
-        
+                </div>
+                <div class="col-4" >
+                    <p>State's teams</p>
+                    <div data-bind="foreach: Teams">
+                        <div class="border rounded py-1 px-2 small">
+                            <a data-bind="text: Name, attr: { href:'./teamDetails.html?id=' + Id + '&acronym=' + Acronym }"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4" >
+                <p>State's Arenas</p>
+                <div data-bind="foreach: Arenas">
+                    <div class="border rounded py-1 px-2 small">
+                        <a data-bind="text: Name, attr: { href:'./arenaDetails.html?id=' + Id}"></a>
+                </div>
+            </div>
+        </div>            
     </div>
     <div class="container">
         <a href="./States.html" class="btn btn-default btn-sm small"><i class="fa fa-list"></i> Back to List</a>
