@@ -49,13 +49,17 @@
             </div>    
                 
             
-        <!-- ko if:Name().length > 0 -->
         <div class="row g-2 ">
             <div class="col-4 centeri ">Name
                 <p data-bind="text:Name"></p>
             </div>
             <div class="col-4 centeri ">Birthdate
-                <p data-bind="text: Birthdate"></p>
+                <!-- ko if: Birthdate -->
+                <p data-bind="text: Birthdate().substring(0,10)"></p>
+                <!-- /ko -->
+                <!-- ko ifnot: Birthdate -->
+                <p data-bind="text:''"></p>
+                <!-- /ko -->
             </div>
             <div class="col-4 centeri ">Country
                 <p data-bind="text: CountryName"></p>
@@ -80,7 +84,6 @@
                 <p data-bind="text: Weight"></p>
             </div>
         </div>
-        <!-- /ko -->
         <div class="row border-bottom g-2" data-bind="visible: Photo() != '' && Photo() != null">
             
             <div class="col-6">
@@ -88,24 +91,25 @@
                 <p data-bind="html: Biography"></p>
                 <!-- /ko -->
                 <div class="elem-group inlined">
-                <table class="table-sm small" style="background-color:rgba(0, 0, 0, 0); text-align: center;">
-                    <th>Seasons Played</th>
-                    <tbody data-bind="foreach: Seasons">
-                    <tr>
-                        <td data-bind="text: Id"></td>
-                    </tr>
-                </tbody>
-            </table>
+                    
+                    <p>Player's Seasons</p>
+                    <div class="row g-1" data-bind="foreach: Seasons">
+                        <div class="col-6">
+                            <div class="border rounded py-1 px-2 small">
+                                <a data-bind="text:Id, attr: { href:'./SeasonsDetails.html?id=' + Id}"></a>
+                            </div>
+                        </div>
+                    </div>          
         </div>
         <div class="elem-group inlined">
-            <table class="table-sm small" style="background-color:rgba(0, 0, 0, 0); text-align: center; float:left">
-                    <th>Teams Played for</th>
-                    <tbody data-bind="foreach: Teams">
-                    <tr>
-                        <td><a class="nav-link" data-bind="text:'[' + Acronym + '] ' + Name, attr: { href:'./teamDetails.html?id=' + Id + '&acronym=' + Acronym}" title="Show Team Details"></a></td>
-                    </tr>
-                </tbody>
-            </table>
+            <p>Player's Teams</p>
+                    <div class="row g-1" data-bind="foreach: Teams">
+                        <div class="col-6">
+                            <div class="border rounded py-1 px-2 small">
+                                <a data-bind="text:Name, attr: { href:'./teamDetails.html?id=' + Id + '&acronym=' + Acronym}"></a>
+                            </div>
+                        </div>
+                    </div>          
         </div>
             </div>
             <div class="small col-6">
