@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="en">
 <head>
     <!-- Required meta tags -->
@@ -12,17 +12,9 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="myCSS.css" />
 </head>
-<style>
-          div.elem-group.inlined {
-            width: 49%;
-            display: inline-block;
-            float: left;
-            margin-left: 1%;
-          }
-</style>
 <body>
     <nav class="navbar navbar-expand-lg navbar-transparent bg-transparent fixed-top">
-        <div class="container ">
+        <div class="container">
             <a class="navbar-brand" href="index.html" tabindex="NBA"><img src="https://static.vecteezy.com/system/resources/previews/027/127/440/original/nba-logo-nba-icon-transparent-free-png.png" height="70" /></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -40,89 +32,52 @@
         </div>
     </nav>
     <!-- Work Area-->
+    <div class="container card">
+        
+        <div class="py-2 mb-3" style="margin-top: 100px;">
+           
+            <h2 class="centeri" style="color:whitesmoke"data-bind="text:' Season[' + Id() + ']'+' players'"></h2>
+        </div>
     
-        <div class="container card">
-            <div class="row" style="margin-top: 100px;">
-            <div class="border-bottom py-2 mb-2">
+    <table class="table table-sm small">
+        <thead class="table-secondary">
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Name</th>
+                <th scope="col">Birthdate</th>
+                <th scope="col">Country</th>
+                <th scope="col">Position</th>
+                <th scope="col">Height</th>
+                <th scope="col">Weight</th>
+                <th scope="col">School</th>
+                <th scope="col" class="text-right"></th>
+            </tr>
+        </thead>
+        <tbody data-bind="foreach: Players">
+            <tr>
+                <td class="align-middle" data-bind="text:Id"></td>
+                <td class="align-middle" data-bind="text:Name"></td>
+                <td class="align-middle" data-bind="text:Birthdate"></td>
+                <td class="align-middle" data-bind="text:CountryName"></td>
+                <td class="align-middle" data-bind="text:PositionName"></td>
+                <td class="align-middle" data-bind="text:Height"></td>
+                <td class="align-middle" data-bind="text:Weight"></td>
+                <td class="align-middle" data-bind="text:School"></td>
                 
-                <h2 class="centeri" style="color:whitesmoke"data-bind="text:Name() +' [' + Id() + ']'"></h2>
-            </div>    
-                
-            
-        <div class="row g-2 ">
-            <div class="col-4 centeri ">Name
-                <p data-bind="text:Name"></p>
-            </div>
-            <div class="col-4 centeri ">Birthdate
-                <!-- ko if: Birthdate -->
-                <p data-bind="text: Birthdate().substring(0,10)"></p>
-                <!-- /ko -->
-                <!-- ko ifnot: Birthdate -->
-                <p data-bind="text:''"></p>
-                <!-- /ko -->
-            </div>
-            <div class="col-4 centeri ">Country
-                <p data-bind="text: CountryName"></p>
-            </div>
-        </div>
-        <div class="row g-2 ">
-            <div class="col-6 centeri ">Position
-                <p data-bind="text:PositionName"></p>
-            </div>
-            <div class="col-6 centeri ">School
-                <p data-bind="text: School"></p>
-            </div>
-        </div>
-        <div class="row g-2 ">
-            <div class="col-4 centeri ">Draft year
-                <p data-bind="text:DraftYear"></p>
-            </div>
-            <div class="col-4 centeri ">Height
-                <p data-bind="text: Height"></p>
-            </div>
-            <div class="col-4 centeri">Weight
-                <p data-bind="text: Weight"></p>
-            </div>
-        </div>
-        <div class="row border-bottom g-2" data-bind="visible: Photo() != '' && Photo() != null">
-            
-            <div class="col-6">
-                <!-- ko if:Biography() != "null" -->
-                <p data-bind="html: Biography"></p>
-                <!-- /ko -->
-                <div class="elem-group inlined">
-                    
-                    <p>Player's Seasons</p>
-                    <div class="row g-1" data-bind="foreach: Seasons">
-                        <div class="col-6">
-                            <div class="border rounded py-1 px-2 small">
-                                <a data-bind="text:Id, attr: { href:'./SeasonsDetails.html?id=' + Id}"></a>
-                            </div>
-                        </div>
-                    </div>          
-        </div>
-        <div class="elem-group inlined">
-            <p>Player's Teams</p>
-                    <div class="row g-1" data-bind="foreach: Teams">
-                        <div class="col-6">
-                            <div class="border rounded py-1 px-2 small">
-                                <a data-bind="text:Name, attr: { href:'./teamDetails.html?id=' + Id + '&acronym=' + Acronym}"></a>
-                            </div>
-                        </div>
-                    </div>          
-        </div>
-            </div>
-            <div class="small col-6">
-                <img class="img-thumbnail" data-bind="attr:{src: Photo}"><br />
-            </div>
-        </div>
-            </div>
-        </div>
-      
-        </div>
-        <div class="container">
-        <a href="./players.html" class="btn btn-default btn-sm small"><i class="fa fa-list"></i> Back to List</a>
-        </div>
+                <td class="text-end">
+                    <a class="btn btn-default btn-light btn-xs" data-bind="attr: { href:'./playersDetails.html?id=' + Id }"><i class="fa fa-eye" title="Show details"></i></a>
+                    <button class="btn btn-default btn-xs"><i class="fa fa-heart-o" data-bind="attr : { 'id': 'favourite_' + Id }" title="Add to favorites"></i></button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+    
+</div>
+<div class="container">
+<a href="./Teams.html" class="btn btn-default btn-sm small"><i class="fa fa-list"></i> Back to Teams</a>
+<a style="float:right" class="btn btn-default btn-sm small" data-bind="attr: { href:'./SeasonsDetails.html?id=' + Id()}"><i class="fa fa-list" ></i>Back to Team details</a>
+</div>
         <!-- Modal -->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -152,6 +107,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.1/knockout-latest.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
-    <script src="playersDetails.js"></script>
+    <script src="SeasonsPlayers.js"></script>
 </body>
 </html>
