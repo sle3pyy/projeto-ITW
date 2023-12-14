@@ -67,13 +67,31 @@
                 <div data-bind="html:History"></div>
             </div>
         </div>
+    <h5 data-bind="text:' [' + Acronym() + ']'+ Name() +'´s players'"></h5>
+     <div class="row g-1" data-bind="foreach: Seasons">
+         <div class="col-3">
+             <div class="border rounded py-1 px-2 small">
+                 <a data-bind="text:Id, attr: { href:'./SeasonDetails.html?id=' + Id}"></a>
+ 
+             </div>
+         </div>
+     </div>   
+        <h5 data-bind="text:' [' + Acronym() + ']'+ Name() +'´s players'"></h5>
+    <div class="row g-1" data-bind="foreach: Players">
+        <div class="col-3">
+            <div class="border rounded py-1 px-2 small">
+                <a data-bind="text:Name, attr: { href:'./playersDetails.html?id=' + Id}"></a>
+
+            </div>
+        </div>
+    </div>
+    
 
     </div>
         
     </div>
     <div class="container">
     <a href="./Teams.html" class="btn btn-primary btn-sm small"><i class="fa fa-list"></i> Back to List</a>
-    <a style="float:right" class="btn btn-primary btn-sm small" data-bind="attr: { href:'./teamPlayers.html?id=' + Id() + '&acronym=' + Acronym()}"><i class="fa fa-list"  ></i>Team's Players</a>
     </div>
     <!-- Modal -->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
