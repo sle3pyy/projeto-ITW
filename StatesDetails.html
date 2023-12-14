@@ -12,6 +12,9 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="myCSS.css" />
 </head>
+<style>
+   
+</style>
 <body>
     <nav class="navbar navbar-expand-lg navbar-transparent bg-transparent fixed-top">
         <div class="container">
@@ -39,12 +42,12 @@
         </div>
         
             <div class="row g-2" >
-                <!-- ko if: Flag != null-->
+                <!-- ko if: Flag() != null-->
                 <div class="col-6 centeri ">
                     <img class="img-thumbnail" data-bind="attr:{src: Flag}"><br />
                 </div>
                 <!-- /ko -->
-                <!-- ko if: Flag == null-->
+                <!-- ko if: Flag() == null-->
                 <div class="col-6 centeri ">
                     <img class="img-thumbnail" src="https://i.pngimg.me/thumb/f/720/m2i8K9d3m2K9N4A0.jpg">
                 </div>
@@ -57,10 +60,11 @@
                 </div>
             </div>
         </div>
+        <p>State's Teams</p>
         <div class="row g-1" data-bind="foreach: Teams">
             <div class="col-3">
                 <div class="border rounded py-1 px-2 small">
-                    <span data-bind="text: Name"></span>
+                    <a data-bind="text:Name, attr: { href:'./teamDetails.html?id=' + Id + '&acronym=' + Acronym}"></a>
                 </div>
             </div>
         </div>            
