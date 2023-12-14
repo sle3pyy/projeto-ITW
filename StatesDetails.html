@@ -39,22 +39,28 @@
         </div>
         
             <div class="row g-2" >
-                <div class="col-4 centeri ">
+                <!-- ko if: Flag != null-->
+                <div class="col-6 centeri ">
                     <img class="img-thumbnail" data-bind="attr:{src: Flag}"><br />
                 </div>
-                <div class="col-4" >
-                    <p>State's teams</p>
-                    <div data-bind="foreach: Teams">
-                        <div class="border rounded py-1 px-2 small">
-                            <a data-bind="text: Name, attr: { href:'./teamDetails.html?id=' + Id + '&acronym=' + Acronym }"></a>
-                    </div>
+                <!-- /ko -->
+                <!-- ko if: Flag == null-->
+                <div class="col-6 centeri ">
+                    <img class="img-thumbnail" src="https://i.pngimg.me/thumb/f/720/m2i8K9d3m2K9N4A0.jpg">
                 </div>
-            </div>
-            <div class="col-4" >
+                <!-- /ko -->
+            <div class="col-6 centeri" >
                 <p>State's Arenas</p>
                 <div data-bind="foreach: Arenas">
                     <div class="border rounded py-1 px-2 small">
-                        <a data-bind="text: Name, attr: { href:'./arenaDetails.html?id=' + Id}"></a>
+                        <a data-bind="text:Name, attr: { href:'./arenaDetails.html?id=' + Id}"></a>
+                </div>
+            </div>
+        </div>
+        <div class="row g-1" data-bind="foreach: Teams">
+            <div class="col-3">
+                <div class="border rounded py-1 px-2 small">
+                    <span data-bind="text: Name"></span>
                 </div>
             </div>
         </div>            
