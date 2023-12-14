@@ -41,15 +41,27 @@
         <div class="row g-2">
             <div class="centeri ">Season
                 <p data-bind="text:Season"></p>
-            
-       
-        
     </div>
-        
+    <h5>Season's Teams</h5>
+    <div class="row g-1" data-bind="foreach: Teams">
+        <div class="col-3">
+            <div class="border rounded py-1 px-2 small">
+                <a data-bind="text:Name, attr: { href:'./teamDetails.html?id=' + Id + '&acronym=' + Acronym}"></a>
+            </div>
+        </div>
+    </div>
+    <h5>Season's Players</h5>
+    <div class="row g-1" data-bind="foreach: Players">
+        <div class="col-3">
+            <div class="border rounded py-1 px-2 small">
+                <a data-bind="text:Name, attr: { href:'./playersDetails.html?id=' + Id}"></a>
+
+            </div>
+        </div>
+    </div>
+    
         <div class="container">
             <a href="./Seasons.html" class="btn btn-default btn-sm small"><i class="fa fa-list"></i> Back to List</a>
-            
-            <a style="float:right" class="btn btn-primary btn-sm small" data-bind="attr: { href:'./SeasonsPlayers.html?id=' + Id()}"><i class="fa fa-list"  ></i>Season's Players</a>
             </div>
     <!-- Modal -->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
