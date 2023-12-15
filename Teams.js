@@ -85,6 +85,11 @@ var vm = function () {
                 var c = JSON.parse(window.localStorage.getItem('favTeams0'))
                 for (var i = 0; i < c.length; i++) {                   
                     if (id == c[i]) {
+                        c.splice(i, 1); // remove the item at index i
+                        window.localStorage.setItem('favPlayers0', JSON.stringify(c)); // update the local storage
+                        console.log('Player unfavourited')
+                        console.log(JSON.parse(window.localStorage.getItem('favPlayers0')))
+                        $('#fav_'+id).removeClass('text-danger')
                         return false
                     }
                 }

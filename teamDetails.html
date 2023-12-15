@@ -51,7 +51,7 @@
                         <p data-bind="text: DivisionName"></p>
                     </div>
                     <div class="centeri ">State
-                        <p data-bind="text:StateName"></p>
+                        <p><a class="nav-link" data-bind="text:StateName, attr: { href:'./StatesDetails.html?id=' + StateId() }" title="Show State Details"></a></p>
                     </div>
                     <div class="centeri ">City
                         <p data-bind="text: City"></p>
