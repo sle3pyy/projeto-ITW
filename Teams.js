@@ -69,7 +69,35 @@ var vm = function () {
             e.keyCode === 13 && self.search();
             return true;
         };
-    
+        self.favoriteTeams = function (id) {
+            console.log('favourite click!')
+            $('#fav_'+id).addClass('text-danger')
+            if (JSON.parse(window.localStorage.getItem('favTeams0')) == null) {
+                console.log('no favTeams in local storage, lets create it');
+                window.localStorage.setItem('favTeams0', '[]');
+                var a = JSON.parse(window.localStorage.getItem('favTeams0'));
+                for(var i=0;i<self.records().length;i++){
+                    if(self.records()[i].Id == id){
+                    b = a.concat(self.records()[i]);
+                }}
+                window.localStorage.setItem('favTeams0', JSON.stringify(b)); 
+            } else {
+                var c = JSON.parse(window.localStorage.getItem('favTeams0'))
+                for (var i = 0; i < c.length; i++) {                   
+                    if (id == c[i]) {
+                        return false
+                    }
+                }
+                var a = JSON.parse(window.localStorage.getItem('favTeams0'));
+                for(var i=0;i<self.records().length;i++){
+                    if(self.records()[i].Id == id){
+                    b = a.concat(self.records()[i]);
+                }}
+                window.localStorage.setItem('favTeams0', JSON.stringify(b));
+                console.log('Arena not favourited, added to favourites')
+            }
+            console.log(JSON.parse(window.localStorage.getItem('favTeams0')))
+        }   
     self.previousPage = ko.computed(function () {
         return self.currentPage() * 1 - 1;
     }, self);
@@ -114,6 +142,13 @@ var vm = function () {
             self.pagesize(data.PageSize)
             self.totalPages(data.TotalPages);
             self.totalRecords(data.TotalRecords);
+            a = JSON.parse(window.localStorage.getItem('favTeams0'));
+            for (var i = 0; i < a.length; i++) {
+                for(var j=0;j<self.records().length;j++){
+                if(a[i].Id==self.records()[j].Id){
+                $('#fav_'+a[i].Id).addClass('text-danger')
+                };
+            }}
             //self.SetFavourites();
         });
     };
