@@ -72,7 +72,7 @@ var vm = function () {
             e.keyCode === 13 && self.search();
             return true;
         };
-        self.favoritePlayer = function (id, event) {
+        self.favoritePlayer = function (id) {
             console.log('favourite click!')
             $('#fav_'+id).addClass('text-danger')
             if (JSON.parse(window.localStorage.getItem('favPlayers0')) == null) {

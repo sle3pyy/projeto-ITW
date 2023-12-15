@@ -43,6 +43,40 @@ var vm = function () {
             });
         };
     };
+    self.favoriteTeams = function (id) {
+        console.log('favourite click!')
+        $('#fav_'+id).addClass('text-danger')
+        if (JSON.parse(window.localStorage.getItem('favTeams0')) == null) {
+            console.log('no favTeams in local storage, lets create it');
+            window.localStorage.setItem('favTeams0', '[]');
+            var a = JSON.parse(window.localStorage.getItem('favTeams0'));
+            for(var i=0;i<self.records().length;i++){
+                if(self.records()[i].Id == id){
+                b = a.concat(self.records()[i]);
+            }}
+            window.localStorage.setItem('favTeams0', JSON.stringify(b)); 
+        } else {
+            var c = JSON.parse(window.localStorage.getItem('favTeams0'))
+            for (var i = 0; i < c.length; i++) {                   
+                if (id == c[i]) {
+                    c.splice(i, 1); // remove the item at index i
+                    window.localStorage.setItem('favPlayers0', JSON.stringify(c)); // update the local storage
+                    console.log('Player unfavourited')
+                    console.log(JSON.parse(window.localStorage.getItem('favPlayers0')))
+                    $('#fav_'+id).removeClass('text-danger')
+                    return false
+                }
+            }
+            var a = JSON.parse(window.localStorage.getItem('favTeams0'));
+            for(var i=0;i<self.records().length;i++){
+                if(self.records()[i].Id == id){
+                b = a.concat(self.records()[i]);
+            }}
+            window.localStorage.setItem('favTeams0', JSON.stringify(b));
+            console.log('Arena not favourited, added to favourites')
+        }
+        console.log(JSON.parse(window.localStorage.getItem('favTeams0')))
+    }   
     //--- Page Events
     self.activate = function () {
         console.log('CALL: getTeams...');
