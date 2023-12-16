@@ -39,6 +39,7 @@
             .carousel-item:nth-child(5) {
                 background-image: url('https://cdn.nba.com/manage/2023/11/GettyImages-1790167479-1-1568x882.jpg');
             }
+            
     </style>
 </head>
 <body>
@@ -122,6 +123,46 @@
             Magna diam fames fermentum molestie arcu egestas molestie vitae conubia rhoncus. Nisl euismod cras parturient lacus litora dictum facilisi cursus. Lorem himenaeos consectetur, varius lectus mi cras laoreet commodo viverra erat? Enim neque ipsum erat curae; lorem arcu. Dapibus risus aenean sapien consectetur varius morbi, sit nulla morbi neque volutpat. Phasellus molestie adipiscing, pulvinar elementum. Consectetur scelerisque dis himenaeos. Feugiat, posuere ornare lacinia. Vulputate id consequat arcu nisl viverra nec vehicula posuere sagittis taciti? Ultrices convallis sollicitudin curabitur luctus fermentum.
         </p>
     </div>-->
+    <div class="container">
+       <!--<div class="elem-group">
+            <p>Bignus</p>
+        </div>
+        <div class="elem-group">
+            <label for="gameDate">Date:</label>
+            <input type="date" id="gameDate">
+            <button id="submit">Search</button>
+        </div>
+        <table class="table table-striped table-sm small">
+            <thead class="table-secondary">
+                <tr>
+                    <th scope="col">Date</th>
+                    <th scope="col">Home Team</th>
+                    <th scope="col">Away Team</th>
+                    <th scope="col" class="text-right"></th>
+                </tr>
+            </thead>
+            <tbody data-bind="foreach:data">
+                <tr>
+                    <td class="align-middle" data-bind="text:date.substring(0,10)"></td>
+                    <td class="align-middle" data-bind="text:home_team.full_name"></td>
+                    <td class="align-middle" data-bind="text:visitor_team.full_name"></td>
+        
+                </tr>
+            </tbody>
+        </table>-->
+        <div class="elem-group inlined">  
+            <p>Todays's Games</p>
+            <p>Today's Games</p>
+            <div class="row g-1 centeri" data-bind="foreach: data">
+                <div class="col-6">
+                    <div class="border rounded py-1 px-2 small">
+                        <a data-bind="text:home_team.full_name + ' vs ' + visitor_team.full_name"></a>
+                    </div>
+                </div>
+            </div>
+            </div>          
+</div>
+    </div>
     <!-- End of Working Area -->
     <nav class="navbar navbar-transparent bg-transparent position-sticky">
         <div class="container small">
