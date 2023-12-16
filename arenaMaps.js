@@ -36,10 +36,8 @@ $("document").ready(function () {
     ajaxHelper(composedUri, 'GET')
         .done(function (data) {
             console.log(data);
-            $.each(data.Records, function (index, record) {
-                L.marker([record.Lat, record.Lon]).addTo(map)
-                    .bindPopup(record.Name + '<br>' + record.StateName + " (" + record.TeamName + ")<br><a class=\"text-dark text-decoration-none\" href =\"./arenaDetails.html?id=" + record.Id+"\"><span class=\"text-danger\">&rarr;</span> Ver Arena</a>");
-            });
+                L.marker([data.Lat, data.Lon]).addTo(map)
+                    .bindPopup(data.Name + '<br>' + data.StateName + " (" + data.TeamName + ")<br><a class=\"text-dark text-decoration-none\" href =\"./arenaDetails.html?id=" + data.Id+"\"><span class=\"text-danger\">&rarr;</span> Ver Arena</a>");
         });
 });
 
