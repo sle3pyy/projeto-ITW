@@ -79,5 +79,12 @@ a {
 a:hover {
     color: grey;
 }
+p {
+    color: whitesmoke;
+    text-decoration: none;
+}
+p:hover {
+    color: grey;
+}
 
 

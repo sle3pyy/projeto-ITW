@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>ITW - NBA Test App</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="myCSS.css" />
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-transaparent bg-transparent fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html" tabindex="NBA"><img src="https://static.vecteezy.com/system/resources/previews/027/127/440/original/nba-logo-nba-icon-transparent-free-png.png" height="70" /></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link " aria-current="page" href="arenas.html"><i class="fa fa-soccer-ball-o text-warning"></i> Arenas</a></li>
+                    <li class="nav-item"><a class="nav-link" aria-current="page" href="players.html"><i class="fa fa-user-o text-primary"></i> Players</a></li>
+                    <li class="nav-item"><a class="nav-link" aria-current="page" href="Teams.html"><i class="fa fa-flag-o text-danger"></i> Teams</a></li>
+                    <li class="nav-item"><a class="nav-link" aria-current="page" href="States.html"><i class="fa fa-map-marker text-success"></i> States</a></li>
+                    <li class="nav-item"><a class="nav-link" aria-current="page" href="Seasons.html"><i class="fa fa-bookmark-o text-info "></i> Seasons</a></li>
+                    <li class="nav-item"><a class="nav-link" aria-current="page" href="Maps.html"><i class="fa fa-magic" title="The party continues..."></i> &middot;&middot;&middot;</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container ">
+        <div class="elem-group inlined card">  
+            <p>Todays's Games</p>
+            <div class="elem-group">
+                <label for="gameDate">Date:</label>
+                <input type="date" id="gameDate">
+                <button id="submit">Search</button>
+            </div>
+            <div class="row g-1 centeri" data-bind="foreach: data">
+                <div class="col-6">
+                    <div class="border rounded py-1 px-2 small">
+                        <p data-bind="text:home_team.full_name + ' vs ' + visitor_team.full_name+'\n'"></p>
+                        <!-- ko if: time != null && time!="Final"-->
+                        <p data-bind="text:'time: '+time+'\n'"></p>
+                        <!-- /ko -->
+                        <!-- ko if: time == null-->
+                        <p data-bind="text:'Starts: '+status.substring(11,16)+'\n'"></p>
+                        <!-- /ko -->
+                        <!-- ko if: time =="Final"-->
+                        <p data-bind="text:'Status: '+status+'\n'"></p>
+                        <!-- /ko -->
+                        <p data-bind="text:home_team_score + ' vs ' + visitor_team_score"></p>
+                    </div>
+                </div>
+            </div>
+            </div>          
+</div>
+    </div>
+    <!-- End of Working Area -->
+    <nav class="navbar navbar-transparent bg-transparent position-sticky">
+        <div class="container small">
+            <div class="navbar-text">&copy;  Introdução as Tecnologias Web - 2023/24</div>
+            <div class="navbar-text texto">Made with <i class="fa fa-heart-o text-danger"></i> for U by <a href="mailto:jsp@ua.pt" class="text-decoration-none text-muted">jsp@ua.pt</a>.</div>
+            <div class="navbar-nav">
+                <div class="nav-item text-end"><a href="https://www.ua.pt" class="nav-link">Universidade de Aveiro</a></div>
+            </div>
+        </div>
+    </nav>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.3/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.1/knockout-latest.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
+    <script src="games.js"></script>
+</body>
+</html>
