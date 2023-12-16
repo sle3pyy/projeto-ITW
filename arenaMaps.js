@@ -12,14 +12,51 @@ function getUrlParameter(sParam) {
         }
     }
 };
+$("document").ready(function () {
+    var map = L.map('map', {
+        fullscreenControl: true,
+        fullscreenControlOptions: {
+            position: 'topleft'
+        }
+    }).setView([0, 0], 2);
+    
+    
+    var pg = getUrlParameter('id');
+    console.log(pg);
+    if (pg == undefined){
+        id=1}
+    else {
+        id=pg
+    }
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
 
-//--- start ....
-showLoading();
-var pg = getUrlParameter('page');
-console.log(pg);
-if (pg == undefined)
-    self.activate(1);
-else {
-    self.activate(pg);
+    var composedUri = "http://192.168.160.58/NBA/api/Arenas/"+ id;
+    ajaxHelper(composedUri, 'GET')
+        .done(function (data) {
+            console.log(data);
+                L.marker([data.Lat, data.Lon]).addTo(map)
+                    .bindPopup(data.Name + '<br>' + data.StateName + " (" + data.TeamName + ")<br><a class=\"text-dark text-decoration-none\" href =\"./arenaDetails.html?id=" + data.Id+"\"><span class=\"text-danger\">&rarr;</span> Ver Arena</a>");
+        });
+});
+
+ 
+
+//--- Internal functions
+function ajaxHelper(uri, method, data) {
+    return $.ajax({
+        type: method,
+        url: uri,
+        dataType: 'json',
+        contentType: 'application/json',
+        data: data ? JSON.stringify(data) : null,
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log("AJAX Call[" + uri + "] Fail...");
+        }
+    });
+    
 }
-console.log("VM initialized!");
+
+
+
