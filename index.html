@@ -39,6 +39,7 @@
             .carousel-item:nth-child(5) {
                 background-image: url('https://cdn.nba.com/manage/2023/11/GettyImages-1790167479-1-1568x882.jpg');
             }
+            
     </style>
 </head>
 <body>
@@ -123,7 +124,7 @@
         </p>
     </div>-->
     <div class="container">
-        <div class="elem-group">
+       <!--<div class="elem-group">
             <p>Bignus</p>
         </div>
         <div class="elem-group">
@@ -148,7 +149,19 @@
         
                 </tr>
             </tbody>
-        </table>
+        </table>-->
+        <div class="elem-group inlined">  
+            <p>Todays's Games</p>
+            <p>Todays's Games</p>
+            <div class="row g-1 centeri" data-bind="foreach: data">
+                <div class="col-6">
+                    <div class="border rounded py-1 px-2 small">
+                        <a data-bind="text:home_team.full_name + ' vs ' + visitor_team.full_name"></a>
+                    </div>
+                </div>
+            </div>
+            </div>          
+</div>
     </div>
     <!-- End of Working Area -->
     <nav class="navbar navbar-transparent bg-transparent position-sticky">
