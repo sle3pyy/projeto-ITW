@@ -131,6 +131,24 @@
             <input type="date" id="gameDate">
             <button id="submit">Search</button>
         </div>
+        <table class="table table-striped table-sm small">
+            <thead class="table-secondary">
+                <tr>
+                    <th scope="col">Date</th>
+                    <th scope="col">Home Team</th>
+                    <th scope="col">Away Team</th>
+                    <th scope="col" class="text-right"></th>
+                </tr>
+            </thead>
+            <tbody data-bind="foreach:data">
+                <tr>
+                    <td class="align-middle" data-bind="text:date.substring(0,10)"></td>
+                    <td class="align-middle" data-bind="text:home_team.full_name"></td>
+                    <td class="align-middle" data-bind="text:visitor_team.full_name"></td>
+        
+                </tr>
+            </tbody>
+        </table>
     </div>
     <!-- End of Working Area -->
     <nav class="navbar navbar-transparent bg-transparent position-sticky">

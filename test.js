@@ -1,6 +1,9 @@
 
 var vm= function(){
 	self.records=ko.observableArray([]);
+	self.data=ko.observableArray([]);
+	self.homeTeam=ko.observableArray([]);
+	self.awayTeam=ko.observableArray([]);
 
 	$('#submit').on('click', function(){
 		var date = new Date($('#gameDate').val());
@@ -26,7 +29,14 @@ var vm= function(){
         console.log('CALL: Games...');
 		$.ajax(settings).done(function (response) {
 			self.records(response);
-			console.log(self.records());
+			self.data(self.records().data);
+			for(var i=0; i<self.data().length; i++){
+			self.homeTeam.push(self.data()[i].home_team);
+			self.awayTeam.push(self.data()[i].visitor_team);
+			}
+			console.log(self.data());
+			console.log(self.homeTeam())
+			console.log(self.awayTeam())
 		});
     };
 
