@@ -23,9 +23,21 @@ var vm = function () {
     //--- Page Events
     self.activate = function (id) {
         console.log('CALL: getArena...');
-        var composedUri = self.baseUri() + id;
+        var composedUri = self.baseUri() + id; 
+        var map = L.map('map', {
+        fullscreenControl: true,
+        fullscreenControlOptions: {
+            position: 'topleft'
+        }
+    }).setView([0, 0], 2);
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
         ajaxHelper(composedUri, 'GET').done(function (data) {
             console.log(data);
+            console.log(data);
+                L.marker([data.Lat, data.Lon]).addTo(map)
+                    .bindPopup(data.Name + '<br>' + data.StateName + " (" + data.TeamName + ")");     
             hideLoading();
             self.Id(data.Id);
             self.Name(data.Name);
@@ -101,7 +113,6 @@ $(document).ready(function () {
     console.log("document.ready!");
     ko.applyBindings(new vm());
 });
-
 $(document).ajaxComplete(function (event, xhr, options) {
     $("#myModal").modal('hide');
 })
