@@ -1,7 +1,9 @@
 
 var vm= function(){
 	self.records=ko.observableArray([]);
+	self.records1=ko.observableArray([]);
 	self.data=ko.observableArray([]);
+	self.data1=ko.observableArray([]);
 
 	$('#submit').on('click', function(){
 		var date = new Date($('#gameDate').val());
@@ -30,7 +32,12 @@ var vm= function(){
 			self.data(self.records().data);
 			console.log(self.data());
 		});
+		$.ajax("http://192.168.160.58/NBA/API/Teams?page=1&pageSize=61").done(function (response) {
+			self.records1(response);
+			console.log(self.data());
+		});
     };
+	
 
 	function todaysGames(){
 		const date = new Date();
