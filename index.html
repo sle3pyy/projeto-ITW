@@ -118,18 +118,18 @@
                 
                     <div class="col-6">
     
-                        <p data-bind="text:home_team.full_name + ' vs ' + visitor_team.full_name+'\n'"></p>
+                        <p style="color:black"data-bind="text:home_team.full_name + ' vs ' + visitor_team.full_name+'\n'"></p>
                         <!-- ko if: time != null && time!="Final"-->
-                        <p data-bind="text:'time: '+time+'\n'"></p>
+                        <p style="color:black"data-bind="text:'time: '+time+'\n'"></p>
                         <!-- /ko -->
                         <!-- ko if: time == null-->
-                        <p data-bind="text:'Starts: '+status.substring(11,16)+'\n'"></p>
+                        <p style="color:black"data-bind="text:'Starts: '+status.substring(11,16)+'\n'"></p>
                         <!-- /ko -->
                         <!-- ko if: time =="Final"-->
-                        <p data-bind="text:'Status: '+status+'\n'"></p>
+                        <p style="color:black"data-bind="text:'Status: '+status+'\n'"></p>
                         <!-- /ko -->
                         <!-- ko if: time != null-->
-                        <p data-bind="text:home_team_score + ' vs ' + visitor_team_score"></p>
+                        <p style="color:black"data-bind="text:home_team_score + ' vs ' + visitor_team_score"></p>
                         <!-- /ko -->
                     </div>
                 
