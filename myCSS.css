@@ -6,7 +6,6 @@
     background-attachment: fixed;
     background-size: cover;
     color:black;
-    font-weight: bold;
     
 }
 
@@ -37,7 +36,8 @@
     padding: 1px 5px;
     font-size: 12px;
     line-height: 1.5;
-    border-radius: 3px;
+    border-radius: 15px;
+    
 }
 
 li.page-item a {
@@ -50,10 +50,7 @@ li.page-item a {
 
 .centeri{text-align: center;}
 
-.card{
-    background-color:rgba(255,255,255,0.65);
-    color:black
-}
+
 .imgh{
     width: 63vh;
     height: 34vh;   
@@ -88,4 +85,29 @@ p {
 }
 .colori{
     color: black;
+}
+.card{
+    background-color:rgba(255,255,255,0.65);
+    color:black
+}
+
+
+body.dark-mode a,
+body.dark-mode p,
+body.dark-mode .colori {
+    color: #fff;
+}
+
+body.dark-mode a:hover {
+    color: #ddd;
+}
+
+body.dark-mode .card {
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #fff;
+}
+body.dark-mode #dark-mode-toggle {
+    background-color: black;
+    color: #fff;
+    border: none;
 }
