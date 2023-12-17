@@ -52,7 +52,7 @@ li.page-item a {
 
 .card{
     background-color:rgba(0,0,0,0.5);
-    color:black
+    color:whitesmoke
 }
 .imgh{
     width: 63vh;
@@ -80,7 +80,7 @@ a:hover {
     color: grey;
 }
 p {
-    color: black;
+    color: whitesmoke;
     text-decoration: none;
 }
 

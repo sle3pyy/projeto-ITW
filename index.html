@@ -64,7 +64,7 @@
     </nav>
     <!-- Working Area -->
     <h3>Today's Games</h3>
-    <div class="container-xl">
+    <div class="container-xl card">
         <div id="myCarousel" class="carousel slide carousel-fade mb-5" data-bs-ride="carousel" data-bs-interval="10000">
             <div class="carousel-indicators">
                 <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" aria-label="Slide 1" class="active" aria-current="true"></button>
@@ -113,9 +113,10 @@
         <div class="elem-group ">  
             <h1 style="text-align: center;">Today's Games</h1>
             <p></p>
-            <div class="row g-1 card centeri" data-bind="foreach: data">
+            <div class="row g-1  centeri" data-bind="foreach: data">
                 
-                    <div class=>
+                    <div class="col-6">
+    
                         <p data-bind="text:home_team.full_name + ' vs ' + visitor_team.full_name+'\n'"></p>
                         <!-- ko if: time != null && time!="Final"-->
                         <p data-bind="text:'time: '+time+'\n'"></p>
@@ -126,7 +127,9 @@
                         <!-- ko if: time =="Final"-->
                         <p data-bind="text:'Status: '+status+'\n'"></p>
                         <!-- /ko -->
+                        <!-- ko if: time != null-->
                         <p data-bind="text:home_team_score + ' vs ' + visitor_team_score"></p>
+                        <!-- /ko -->
                     </div>
                 
             </div>
