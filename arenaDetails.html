@@ -65,17 +65,18 @@
         </div>
 
         <div class="row border-bottom g-2" data-bind="visible: Photo() != '' && Photo() != null">
-            <div class="small">
+            <div class="small col-5">
                 <img class="img-thumbnail" data-bind="attr:{src: Photo}"><br />
                 <i class="fa fa-link"></i> [<a class="link-dark text-decoration-none" data-bind="attr: { href: Photo }, text: Photo" target="_blank"></a>]
             </div>
-        </div>
-        <div class="container">
-            <div id="map" style="height:720px;width:100%"></div>
+        
+        <div class="col-7">
+            <div id="map" style="height:500px;width:100%"></div>
         </div>
     </div>
+    </div>
     <div class="container">
-        <a href="./players.html" class="btn btn-default btn-sm small"><i class="fa fa-list"></i> Back to List</a>
+        <a href="./arenas.html" class="btn btn-default btn-sm small"><i class="fa fa-list"></i> Back to List</a>
         </div>
     <!-- Modal -->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
