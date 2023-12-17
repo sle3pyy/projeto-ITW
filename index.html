@@ -111,25 +111,25 @@
             </button>
         </div>
 
-        <div class="elem-group ">  
+        <div class="elem-group card">  
             <h1 style="text-align: center;">Today's Games</h1>
             <p></p>
             <div class="row g-1  centeri" data-bind="foreach: data">
                 
                     <div class="col-6">
     
-                        <p style="color:black"data-bind="text:home_team.full_name + ' vs ' + visitor_team.full_name+'\n'"></p>
+                        <p data-bind="text:home_team.full_name + ' vs ' + visitor_team.full_name+'\n'"></p>
                         <!-- ko if: time != null && time!="Final"-->
-                        <p style="color:black"data-bind="text:'time: '+time+'\n'"></p>
+                        <p style="color:red"data-bind="text:'time: '+time+'\n'"></p>
                         <!-- /ko -->
                         <!-- ko if: time == null-->
-                        <p style="color:black"data-bind="text:'Starts: '+status.substring(11,16)+'\n'"></p>
+                        <p data-bind="text:'Starts: '+status.substring(11,16)+'\n'"></p>
                         <!-- /ko -->
                         <!-- ko if: time =="Final"-->
-                        <p style="color:black"data-bind="text:'Status: '+status+'\n'"></p>
+                        <p data-bind="text:'Status: '+status+'\n'"></p>
                         <!-- /ko -->
                         <!-- ko if: time != null-->
-                        <p style="color:black"data-bind="text:home_team_score + ' vs ' + visitor_team_score"></p>
+                        <p data-bind="text:home_team_score + ' vs ' + visitor_team_score"></p>
                         <!-- /ko -->
                     </div>
                 

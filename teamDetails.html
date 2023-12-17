@@ -37,7 +37,7 @@
         
             <div class="py-2 mb-3" style="margin-top: 100px;">
                
-                <h2 class="centeri" style="color:whitesmoke"data-bind="text:Name() +' [' + Acronym() + ']'"></h2>
+                <h2 class="centeri colori" data-bind="text:Name() +' [' + Acronym() + ']'"></h2>
             </div>
             
             <div class="row g-2 ">
@@ -71,7 +71,7 @@
     <h5 data-bind="text:' [' + Acronym() + ']'+ Name() +'´s Seasons'"></h5>
      <div class="row g-1" data-bind="foreach: Seasons">
          <div class="col-3">
-             <div class="border rounded py-1 px-2 small">
+             <div class="border rounded py-1 px-2 small colori">
                  <a data-bind="text:Id, attr: { href:'./SeasonDetails.html?id=' + Id}"></a>
  
              </div>
