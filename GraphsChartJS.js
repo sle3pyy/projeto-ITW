@@ -10,8 +10,8 @@ $('document').ready(function () {
         $.each(stats, function (index, item) {
             myLabels.push(item.Season+' '+item.SeasonType);
             myData.push(item.Players);
+            console.log(myLabels,myData);
         })
-        console.log(myLabels,myData);
 
 
         // Instantiate and draw our chart, passing in some options.
@@ -33,7 +33,7 @@ $('document').ready(function () {
                         display: true,
                         labels: { align: 'start', font: { family: 'Open Sans' } },
                         title: {
-                            display: true, text: ['Estatísticas Gerais', 'N.º de Players por Season'], padding: { top: 10, bottom: 10 }, font: { size: 12, family: 'Open Sans' }
+                            display: true, text: ['Estatísticas Gerais', 'N.º de Atletas por edição dos Jogos Olímpicos'], padding: { top: 10, bottom: 10 }, font: { size: 12, family: 'Open Sans' }
                         },
                     }
                 },
