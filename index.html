@@ -122,7 +122,7 @@
     
                         <p data-bind="text:home_team.full_name + ' vs ' + visitor_team.full_name+'\n'"></p>
                         <!-- ko if: time != null && time!="Final"-->
-                        <p style="color:red"data-bind="text:'time: '+time+'\n'"></p>
+                        <p style='color:red' data-bind="text:'time: '+time+'\n'"></p>
                         <!-- /ko -->
                         <!-- ko if: time == null-->
                         <p data-bind="text:'Starts: '+status.substring(11,16)+'\n'"></p>
