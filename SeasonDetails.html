@@ -38,23 +38,30 @@
             <h2 data-bind="text:Season() +' [' + Id() + ']'"></h2>
         </div>
         
-    <h5>Season's Teams</h5>
-    <div class="row g-1" data-bind="foreach: Teams">
-        <div class="col-3">
-            <div class="border rounded py-1 px-2 small">
-                <a data-bind="text:Name, attr: { href:'./teamDetails.html?id=' + Id + '&acronym=' + Acronym}"></a>
+        <h5 class="centeri"data-bs-toggle="collapse" href="#collapseTeams" role="button" aria-expanded="false" aria-controls="collapseTeams">
+            Season's Teams<span class="arrow">&#9654;</span>
+        </h5>
+        <div class="collapse" id="collapseTeams">
+            <div class="row g-1" data-bind="foreach: Teams">
+                <div class="col-3">
+                    <div class="border rounded py-1 px-2 small">
+                        <a data-bind="text:Name, attr: { href:'./teamDetails.html?id=' + Id + '&acronym=' + Acronym}"></a>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-    <h5>Season's Players</h5>
-    <div class="row g-1" data-bind="foreach: Players">
-        <div class="col-3">
-            <div class="border rounded py-1 px-2 small">
-                <a data-bind="text:Name, attr: { href:'./playersDetails.html?id=' + Id}"></a>
-
+        <h5 class="centeri"data-bs-toggle="collapse" href="#collapsePlayers" role="button" aria-expanded="false" aria-controls="collapsePlayers">
+            Season's Players<span class="arrow">&#9654;</span>
+        </h5>
+        <div class="collapse" id="collapsePlayers">
+            <div class="row g-1" data-bind="foreach: Players">
+                <div class="col-3">
+                    <div class="border rounded py-1 px-2 small">
+                        <a data-bind="text:Name, attr: { href:'./playersDetails.html?id=' + Id}"></a>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
     
     
         <div class="container">

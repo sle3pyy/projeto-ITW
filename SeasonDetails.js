@@ -95,3 +95,13 @@ $(document).ready(function () {
 $(document).ajaxComplete(function (event, xhr, options) {
     $("#myModal").modal('hide');
 })
+document.querySelectorAll('[data-bs-toggle="collapse"]').forEach(function (element) {
+    element.addEventListener('click', function () {
+        var arrow = this.querySelector('.arrow');
+        if (arrow.textContent === '▶') {
+            arrow.textContent = '▼';
+        } else {
+            arrow.textContent = '▶';
+        }
+    });
+});
