@@ -1,4 +1,4 @@
-﻿const composedUri = "http://192.168.160.58/Olympics/api/statistics/games_athletes";
+﻿const composedUri = "http://192.168.160.58/NBA/api/statistics/NumPlayersBySeason";
 
 $('document').ready(function () {
     const ctx = document.getElementById('myChart');
@@ -8,8 +8,9 @@ $('document').ready(function () {
         var myLabels = [];
         var myData = [];
         $.each(stats, function (index, item) {
-            myLabels.push(item.Name);
-            myData.push(item.Counter);
+            myLabels.push(item.Season+' '+item.SeasonType);
+            myData.push(item.Players);
+            console.log(myLabels,myData);
         })
 
 

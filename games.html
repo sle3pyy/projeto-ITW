@@ -27,7 +27,9 @@
                     <li class="nav-item"><a style="color:white" class="nav-link " aria-current="page" href="States.html"><i class="fa fa-map-marker text-success"></i> States</a></li>
                     <li class="nav-item"><a style="color:white" class="nav-link" aria-current="page" href="Seasons.html"><i class="fa fa-bookmark-o text-info "></i> Seasons</a></li>
                     <li class="nav-item"><a style="color:white" class="nav-link " aria-current="page" href="games.html"><i class="fa  fa-gamepad text-secondary "></i> Games</a></li>
-                    <li class="nav-item"><a style="color:white" class="nav-link active" aria-current="page" href="Maps.html"><i class="fa fa-magic" title="The party continues..."></i> &middot;&middot;&middot;</a></li>
+                    <li class="nav-item"><a style="color:white" class="nav-link active" aria-current="page" href="GraphsChartJS.html"><i class=" fa fa-bar-chart-o" ></i>Chart</a></li>
+                    <li class="nav-item"><a style="color:white" class="nav-link active" aria-current="page" href="Maps.html"><i class="fa fa-magic"></i>Map</a></li>
+                    <button id="dark-mode-toggle" style=" border-radius: 100%;border:0.25px solid; height:40px"><i class="fa fa-sun-o"></i></button>
                 </ul>
             </div>
         </div>
@@ -44,13 +46,13 @@
                 <div class="col-6">
     
                     <p data-bind="text:home_team.full_name + ' vs ' + visitor_team.full_name+'\n'"></p>
-                    <!-- ko if: time != null && time!="Final"-->
+                    <!-- ko if: time != null && time!="Final" && time!=" "-->
                     <p style="color:red"data-bind="text:'Live: '+time+'\n'"></p>
                     <!-- /ko -->
                     <!-- ko if: time == null-->
                     <p data-bind="text:'Starts: '+status.substring(11,16)+'\n'"></p>
                     <!-- /ko -->
-                    <!-- ko if: time =="Final"-->
+                    <!-- ko if: time =="Final" || time==" "-->
                     <p data-bind="text:'Status: '+status+'\n'"></p>
                     <!-- /ko -->
                     <!-- ko if: time != null-->
@@ -64,11 +66,11 @@
     </div>
     <!-- End of Working Area -->
     <nav class="navbar navbar-transparent bg-transparent position-sticky">
-        <div class="container small">
+        <div class="container small " style="background-color: beige; border-radius: 5px;">
             <div class="navbar-text">&copy;  Introdução as Tecnologias Web - 2023/24</div>
             <div class="navbar-text texto">Made with <i class="fa fa-heart-o text-danger"></i> for U by <a href="mailto:jsp@ua.pt" class="text-decoration-none text-muted">jsp@ua.pt</a>.</div>
             <div class="navbar-nav">
-                <div class="nav-item text-end"><a href="https://www.ua.pt" class="nav-link">Universidade de Aveiro</a></div>
+                <div class="nav-item text-end"><a style="color:black"href="https://www.ua.pt" class="nav-link">Universidade de Aveiro</a></div>
             </div>
         </div>
     </nav>
