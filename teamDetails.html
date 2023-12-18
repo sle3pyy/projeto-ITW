@@ -70,7 +70,7 @@
                 <div data-bind="html:History"></div>
             </div>
         </div>
-    <h5 data-bind="text:' [' + Acronym() + ']'+ Name() +'´s Seasons'"  data-bs-toggle="collapse" href="#collapseseason" role="button" ></h5>
+    <h5 data-bind="text:' [' + Acronym() + ']'+ Name() +'´s Seasons'"  data-bs-toggle="collapse" href="#collapseseason" role="button" ><span class="arrow">&#9654;</span></h5>
      <div class="row g-1 collapse" id="collapseseason" data-bind="foreach: Seasons">
          <div class="col-3">
              <div class="border rounded py-1 px-2 small colori">
@@ -79,7 +79,7 @@
              </div>
          </div>
      </div>   
-        <h5 data-bind="text:' [' + Acronym() + ']'+ Name() +'´s Players'"  data-bs-toggle="collapse" href="#collapsePlayers" role="button" ></h5>
+        <h5 data-bind="text:' [' + Acronym() + ']'+ Name() +'´s Players'"  data-bs-toggle="collapse" href="#collapsePlayers" role="button" ><span class="arrow">&#9654;</span></h5>
     <div class="row g-1 collapse" id="collapsePlayers" data-bind="foreach: Players">
         <div class="col-3">
             <div class="border rounded py-1 px-2 small">
