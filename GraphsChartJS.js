@@ -1,4 +1,4 @@
-﻿const composedUri = "http://192.168.160.58/Olympics/api/statistics/games_athletes";
+﻿const composedUri = "http://192.168.160.58/NBA/api/statistics/NumPlayersBySeason";
 
 $('document').ready(function () {
     const ctx = document.getElementById('myChart');
@@ -8,9 +8,10 @@ $('document').ready(function () {
         var myLabels = [];
         var myData = [];
         $.each(stats, function (index, item) {
-            myLabels.push(item.Name);
-            myData.push(item.Counter);
+            myLabels.push(item.Season+' '+item.SeasonType);
+            myData.push(item.Players);
         })
+        console.log(myLabels,myData);
 
 
         // Instantiate and draw our chart, passing in some options.
@@ -32,7 +33,7 @@ $('document').ready(function () {
                         display: true,
                         labels: { align: 'start', font: { family: 'Open Sans' } },
                         title: {
-                            display: true, text: ['Estatísticas Gerais', 'N.º de Atletas por edição dos Jogos Olímpicos'], padding: { top: 10, bottom: 10 }, font: { size: 12, family: 'Open Sans' }
+                            display: true, text: ['Estatísticas Gerais', 'N.º de Players por Season'], padding: { top: 10, bottom: 10 }, font: { size: 12, family: 'Open Sans' }
                         },
                     }
                 },
