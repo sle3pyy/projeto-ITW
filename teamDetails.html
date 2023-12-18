@@ -70,8 +70,8 @@
                 <div data-bind="html:History"></div>
             </div>
         </div>
-    <h5 data-bind="text:' [' + Acronym() + ']'+ Name() +'´s Seasons'"></h5>
-     <div class="row g-1" data-bind="foreach: Seasons">
+    <h5 data-bind="text:' [' + Acronym() + ']'+ Name() +'´s Seasons'"  data-bs-toggle="collapse" href="#collapseseason" role="button" ></h5>
+     <div class="row g-1 collapse" id="collapseseason" data-bind="foreach: Seasons">
          <div class="col-3">
              <div class="border rounded py-1 px-2 small colori">
                  <a data-bind="text:Id, attr: { href:'./SeasonDetails.html?id=' + Id}"></a>
@@ -79,8 +79,8 @@
              </div>
          </div>
      </div>   
-        <h5 data-bind="text:' [' + Acronym() + ']'+ Name() +'´s Players'"></h5>
-    <div class="row g-1" data-bind="foreach: Players">
+        <h5 data-bind="text:' [' + Acronym() + ']'+ Name() +'´s Players'"  data-bs-toggle="collapse" href="#collapsePlayers" role="button" ></h5>
+    <div class="row g-1 collapse" id="collapsePlayers" data-bind="foreach: Players">
         <div class="col-3">
             <div class="border rounded py-1 px-2 small">
                 <a data-bind="text:Name, attr: { href:'./playersDetails.html?id=' + Id}"></a>
