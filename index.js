@@ -47,8 +47,3 @@ $(document).ready(function () {
     console.log("ready!");
     ko.applyBindings(new vm());
 });
-
-document.getElementById('dark-mode-toggle').addEventListener('click', function() {
-    document.body.classList.toggle('dark-mode');
-    this.innerHTML = document.body.classList.contains('dark-mode') ? '<i class="fa fa-moon-o"></i>' : '<i class="fa fa-sun-o"></i>';
-});

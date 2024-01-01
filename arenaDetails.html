@@ -30,7 +30,7 @@
                     <li class="nav-item"><a style="color:white" class="nav-link " aria-current="page" href="games.html"><i class="fa  fa-gamepad text-secondary "></i> Games</a></li>
                     <li class="nav-item"><a style="color:white" class="nav-link " aria-current="page" href="GraphsChartJS.html"><i class=" fa fa-bar-chart-o" ></i>Chart</a></li>
                     <li class="nav-item"><a style="color:white" class="nav-link " aria-current="page" href="Maps.html"><i class="fa  fa-map"></i>Map</a></li>
-                    
+                    <button id="dark-mode-toggle" style=" border-radius: 100%;border:0.25px solid; height:40px"><i class="fa fa-sun-o"></i></button>
                 </ul>
             </div>
         </div>
@@ -68,7 +68,6 @@
         <div class="row border-bottom g-2" data-bind="visible: Photo() != '' && Photo() != null">
             <div class="small col-5">
                 <img class="img-thumbnail" data-bind="attr:{src: Photo}"><br />
-                <i class="fa fa-link"></i> [<a class="link-dark text-decoration-none" data-bind="attr: { href: Photo }, text: Photo" target="_blank"></a>]
             </div>
         
         <div class="col-7">
@@ -111,5 +110,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.1/knockout-latest.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
     <script src="arenaDetails.js"></script>
+    <script src="darkModeToggler.js"></script>
 </body>
 </html>
