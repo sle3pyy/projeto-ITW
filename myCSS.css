@@ -100,6 +100,10 @@ p {
     color: black;
     text-decoration: none;
 }
+h2 {
+    color: black;
+    text-decoration: none;
+}
 .colori{
     color: black;
 }
@@ -111,6 +115,7 @@ p {
 
 body.dark-mode a,
 body.dark-mode p,
+body.dark-mode h2,
 body.dark-mode .colori {
     color: #fff;
 }
