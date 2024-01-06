@@ -13,11 +13,13 @@ function toggler(){
         localStorage.setItem('color-mode','dark');
     } 
 }
+
 function starter(){
-    if (localStorage.getItem('color-mode') == null) {
+    let currentMode = localStorage.getItem('color-mode');
+    if (currentMode == null) {
         localStorage.setItem('color-mode','light');
     }
-    else if (localStorage.getItem('color-mode') == 'dark') {
+    else if (currentMode == 'dark') {
         document.documentElement.setAttribute('data-bs-theme','dark');
         document.body.classList.add('dark-mode');
         document.getElementById('dark-mode-toggle').innerHTML=('<i class="fa fa-moon-o"></i>');
