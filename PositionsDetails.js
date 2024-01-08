@@ -1,0 +1,108 @@
+// ViewModel KnockOut
+var vm = function () {
+    console.log('ViewModel initiated...');
+    //---Variáveis locais
+    var self = this;
+    self.baseUri = ko.observable('http://192.168.160.58/NBA/API/Positions/');
+    self.displayName = 'NBA Positions Details';
+    self.error = ko.observable('');
+    self.passingMessage = ko.observable('');
+    //--- Data Record
+    self.Id = ko.observable('');
+    self.Name = ko.observable('');
+    self.Description = ko.observable('');
+    self.Players = ko.observable([]);
+
+    //--- Page Events
+    self.activate = function (id,acronym) {
+        console.log('CALL: getTeam...');
+        var composedUri = self.baseUri() + id;
+        console.log(composedUri);
+        ajaxHelper(composedUri, 'GET').done(function (data) {
+            console.log(data);
+            hideLoading();
+            self.Id(data.Id);
+            self.Description(data.Description);
+            self.Name(data.Name);
+            self.Players(data.Players);
+            
+        });
+    };
+
+  
+    //--- Internal functions
+    function ajaxHelper(uri, method, data) {
+        self.error(''); // Clear error message
+        return $.ajax({
+            type: method,
+            url: uri,
+            dataType: 'json',
+            contentType: 'application/json',
+            data: data ? JSON.stringify(data) : null,
+            error: function (jqXHR, textStatus, errorThrown) {
+                console.log("AJAX Call[" + uri + "] Fail...");
+                hideLoading();
+                self.error(errorThrown);
+            }
+        });
+    }
+
+    function showLoading() {
+        $('#myModal').modal('show', {
+            backdrop: 'static',
+            keyboard: false
+        });
+    }
+    function hideLoading() {
+        $('#myModal').on('shown.bs.modal', function (e) {
+            $("#myModal").modal('hide');
+        })
+    }
+
+    function getUrlParameter(sParam) {
+        var sPageURL = window.location.search.substring(1),
+            sURLVariables = sPageURL.split('&'),
+            sParameterName,
+            i;
+
+        for (i = 0; i < sURLVariables.length; i++) {
+            sParameterName = sURLVariables[i].split('=');
+
+            if (sParameterName[0] === sParam) {
+
+                return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
+            }
+        }
+    };
+
+    //--- start ....
+    showLoading();
+    var pg = getUrlParameter('id');
+    console.log(pg);
+    if (pg == undefined)
+        self.activate(1);
+    else {
+        self.activate(pg);
+    }
+    console.log("VM initialized!");
+};
+
+$(document).ready(function () {
+    console.log("document.ready!");
+    ko.applyBindings(new vm());
+});
+
+$(document).ajaxComplete(function (event, xhr, options) {
+    $("#myModal").modal('hide');
+})
+
+document.querySelectorAll('[data-bs-toggle="collapse"]').forEach(function (element) {
+    element.addEventListener('click', function () {
+        var arrow = this.querySelector('.arrow');
+        if (arrow.textContent === '▶') {
+            arrow.textContent = '▼';
+        } else {
+            arrow.textContent = '▶';
+        }
+    });
+});
