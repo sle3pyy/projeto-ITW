@@ -71,6 +71,7 @@ li.page-item a {
     width: 63vh;
     height: 34vh;   
 }
+
 .navbar-nav, .pagination{
     background-color: transparent;
     border: 0px;
@@ -78,9 +79,6 @@ li.page-item a {
 }
 .nav-item{
     color:whitesmoke
-}
-.navbar-toggler-icon{
-    color: whitesmoke;
 }
 ul{
     list-style-type: none;
@@ -103,8 +101,15 @@ p {
     text-decoration: none;
 }
 h2 {
-    color: black;
+    color: white;
     text-decoration: none;
+}
+span {
+    color: white;
+    text-decoration: none;
+}
+.navbar-toggler{
+    color:gray;
 }
 .colori{
     color: black;
@@ -114,10 +119,17 @@ h2 {
     color:black
 }
 
-
+body.dark-mode h2{
+    color: gray;
+}
+body.dark-mode span{
+    color: gray;
+}
+body.dark-mode .navbar-toggler{
+    color: gray;
+}
 body.dark-mode a,
 body.dark-mode p,
-body.dark-mode h2,
 body.dark-mode .colori {
     color: #fff;
 }
