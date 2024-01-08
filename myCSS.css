@@ -79,6 +79,9 @@ li.page-item a {
 .nav-item{
     color:whitesmoke
 }
+.navbar-toggler-icon{
+    color: whitesmoke;
+}
 ul{
     list-style-type: none;
     background-color: white;
