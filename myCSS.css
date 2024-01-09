@@ -125,12 +125,13 @@ body.dark-mode span{
 }
 .navbar-toggler,
 .navbar-toggler-icon {
-    background-color: transparent;
+    background-color:white;
     color: gray !important;
 }
 
 body.dark-mode .navbar-toggler,
 body.dark-mode .navbar-toggler-icon {
+    background-color:black;
     color: gray !important;
 }
 body.dark-mode a,
