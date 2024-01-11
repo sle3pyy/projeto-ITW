@@ -153,3 +153,7 @@ body.dark-mode #dark-mode-toggle {
     color: #fff;
     border: none;
 }
+.transparent-btn {
+    background-color: transparent;
+    border: none;
+  }

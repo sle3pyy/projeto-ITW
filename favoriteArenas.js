@@ -12,59 +12,36 @@ var vm = function () {
     self.error = ko.observable('');
     self.passingMessage = ko.observable('');
     self.records = ko.observableArray([]);
-    self.search = function() {
-        console.log("searching")
-        if ($("#searchb").val() === "") {
-            showLoading();
-            var pg = getUrlParameter('page');
-            console.log(pg);
-            if (pg == undefined)
-                self.activate(1);
-            else {
-                self.activate(pg);
-            }
-        } else {
-            var Uri ='http://192.168.160.58/NBA/api/Arenas/Search?q='+ $("#searchb").val();
-            self.arenalist = [];
-        ajaxHelper(Uri, 'GET').done(function(data) {
-            console.log(data.length)
-            if (data.length == 0) {
-                return alert('No results found')
-            }
-            self.totalPages(1)
-            console.log(data);
-            showLoading();
-            self.records(data);
-            self.totalRecords(data.length);
-            hideLoading();
-            for (var i in data) {
-                self.arenalist.push(data[i]);
+    self.favoriteArenas = function (id) {
+    var c = JSON.parse(window.localStorage.getItem('favArenas0'))
+            for (var i = 0; i < c.length; i++) {                   
+                if (id == c[i].Id) {
+                    c.splice(i, 1); // remove the item at index i
+                    window.localStorage.setItem('favArenas0', JSON.stringify(c)); // update the local storage
+                    console.log('Arena unfavourited')
+                    $('#fav_'+id).removeClass('text-danger')
+                    self.activate(); 
+                    return false
                 }
-            });
-        };
-    };
+            }
+    } 
     //--- Page Events
     self.activate = function () {
         console.log('CALL: getArenas...');
-        var composedUri = self.baseUri();
-        ajaxHelper(composedUri, 'GET').done(function (data) {
-            console.log(data);
-            console.log(composedUri);
-            if (JSON.parse(window.localStorage.getItem('favArenas0')) == null) {
-                self.records(null)
-            } else {
-                console.log('checking which Arenas were favourited')
-                var arenasList = [];
-                var favArenasList = JSON.parse(window.localStorage.getItem('favArenas0'));
-                var a = favArenasList.length;
-                console.log(favArenasList,data.TotalRecords)
-                for (var i = 0; i < a; i++) {
-                            arenasList.push(favArenasList[i])
-                }
-                self.records(arenasList)
+        if (JSON.parse(window.localStorage.getItem('favArenas0')) == null) {
+            self.records(null)
+        } else {
+            console.log('checking which Arenas were favourited')
+            var arenasList = [];
+            var favArenasList = JSON.parse(window.localStorage.getItem('favArenas0'));
+            var a = favArenasList.length;
+            console.log(favArenasList)
+            for (var i = 0; i < a; i++) {
+                arenasList.push(favArenasList[i])
             }
-            hideLoading();
-        });
+            self.records(arenasList)
+        }
+        hideLoading();
         console.log(self.records())
     };
 

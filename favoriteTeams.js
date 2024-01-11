@@ -12,60 +12,37 @@ var vm = function () {
     self.error = ko.observable('');
     self.passingMessage = ko.observable('');
     self.records = ko.observableArray([]);
-    self.search = function() {
-        console.log("searching")
-        if ($("#searchb").val() === "") {
-            showLoading();
-            var pg = getUrlParameter('page');
-            console.log(pg);
-            if (pg == undefined)
-                self.activate(1);
-            else {
-                self.activate(pg);
-            }
-        } else {
-            var Uri ='http://192.168.160.58/NBA/api/Teams/Search?q='+ $("#searchb").val();
-            self.teamslist = [];
-        ajaxHelper(Uri, 'GET').done(function(data) {
-            console.log(data.length)
-            if (data.length == 0) {
-                return alert('No results found')
-            }
-            self.totalPages(1)
-            console.log(data);
-            showLoading();
-            self.records(data);
-            self.totalRecords(data.length);
-            hideLoading();
-            for (var i in data) {
-                self.teamslist.push(data[i]);
+    self.favoriteTeams = function (id) {
+        var c = JSON.parse(window.localStorage.getItem('favTeams0'))
+            for (var i = 0; i < c.length; i++) {                   
+                if (id == c[i].Id) {
+                    c.splice(i, 1); // remove the item at index i
+                    window.localStorage.setItem('favTeams0', JSON.stringify(c)); // update the local storage
+                    console.log('Team unfavourited')
+                    $('#fav_'+id).removeClass('text-danger')
+                    self.activate(); 
+                    return false
                 }
-            });
-        };
-    };
+            }
+    } 
     //--- Page Events
     self.activate = function () {
         console.log('CALL: getTeams...');
-        var composedUri = self.baseUri();
-        ajaxHelper(composedUri, 'GET').done(function (data) {
-            console.log(data);
-            console.log(composedUri);
-            if (JSON.parse(window.localStorage.getItem('favTeams0')) == null) {
-                self.records(null)
-            } else {
-                console.log('checking which Teams were favourited')
-                var teamsList = [];
-                var favTeamsList = JSON.parse(window.localStorage.getItem('favTeams0'));
-                var a = favTeamsList.length;
-                console.log(favTeamsList,data.TotalRecords)
-                for (var i = 0; i < a; i++) {
-                    teamsList.push(favTeamsList[i])
-                }
-                self.records(teamsList)
+        if (JSON.parse(window.localStorage.getItem('favTeams0')) == null) {
+            self.records(null)
+        } else {
+            console.log('checking which Teams were favourited')
+            var teamsList = [];
+            var favTeamsList = JSON.parse(window.localStorage.getItem('favTeams0'));
+            var a = favTeamsList.length;
+            console.log(favTeamsList)
+            for (var i = 0; i < a; i++) {
+                teamsList.push(favTeamsList[i])
             }
-            hideLoading();
-        });
-        console.log(self.records())
+            self.records(teamsList)
+            console.log(self.records())
+        }
+       hideLoading();
     };
 
     //--- Internal functions
@@ -119,13 +96,7 @@ var vm = function () {
 
     //--- start ....
     showLoading();
-    var pg = getUrlParameter('page');
-    console.log(pg);
-    if (pg == undefined)
-        self.activate(1);
-    else {
-        self.activate(pg);
-    }
+    self.activate();
     console.log("VM initialized!");
     
 };

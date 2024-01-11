@@ -2,41 +2,47 @@
 var vm = function () {
     
     console.log('ViewModel initiated...');
-    //---Variáveis locais
+
     var self = this;
     
     self.searchb = ko.observable('');
-    console.log("did it");
     self.baseUri = ko.observable('http://192.168.160.58/NBA/api/Players');
     self.displayName = 'NBA Favorite Players List';
     self.error = ko.observable('');
     self.passingMessage = ko.observable('');
     self.records = ko.observableArray([]);
-
+    self.favoritePlayers = function (id) {
+        var c = JSON.parse(window.localStorage.getItem('favPlayers0'))
+            for (var i = 0; i < c.length; i++) {                   
+                if (id == c[i].Id) {
+                    c.splice(i, 1); // remove the item at index i
+                    window.localStorage.setItem('favPlayers0', JSON.stringify(c)); // update the local storage
+                    console.log('Player unfavourited')
+                    $('#fav_'+id).removeClass('text-danger')
+                    self.activate(); 
+                    return false
+                }
+            }
+    } 
     
     //--- Page Events
     self.activate = function () {
-        console.log('CALL: getPlayers...');
-        var composedUri = self.baseUri();
-        ajaxHelper(composedUri, 'GET').done(function (data) {
-            //console.log(data);
-            console.log(composedUri);
-            if (JSON.parse(window.localStorage.getItem('favPlayers0')) == null) {
-                self.records(null)
-            } else {
-                console.log('checking which Players were favourited')
-                var playersList = [];
-                var favPlayersList = JSON.parse(window.localStorage.getItem('favPlayers0'));
-                var a = favPlayersList.length;
-                console.log(a,favPlayersList)
-                for (var i = 0; i < a; i++) {
-                    console.log(favPlayersList[i])
-                    playersList.push(favPlayersList[i])
-                }
-                self.records(playersList)
+        console.log('CALL: Players...');
+        if (JSON.parse(window.localStorage.getItem('favPlayers0')) == null) {
+            self.records(null)
+        } else {
+            console.log('checking which Players were favourited')
+            var playersList = [];
+            var favPlayersList = JSON.parse(window.localStorage.getItem('favPlayers0'));
+            var a = favPlayersList.length;
+            console.log(a,favPlayersList)
+            for (var i = 0; i < a; i++) {
+                console.log(favPlayersList[i])
+                playersList.push(favPlayersList[i])
             }
-            hideLoading();
-        });
+            self.records(playersList)
+        }
+        hideLoading();
         console.log(self.records())
     };
 
@@ -91,13 +97,7 @@ var vm = function () {
 
     //--- start ....
     showLoading();
-    var pg = getUrlParameter('page');
-    console.log(pg);
-    if (pg == undefined)
-        self.activate(1);
-    else {
-        self.activate(pg);
-    }
+    self.activate();
     console.log("VM initialized!");
     
 };

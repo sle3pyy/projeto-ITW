@@ -92,7 +92,7 @@
         <div class="col-3">
             <div class="border rounded py-1 px-2 small">
                 <a data-bind="text:Name, attr: { href:'./playersDetails.html?id=' + Id}"></a>
-
+                <button class="btn btn-default btn-xs"><i class="fa fa-heart" data-bind="attr:{id:'fav_'+Id}, click: function (data) {$root.favoriteTeams(Id)}" title="Add to favorites"></i></button>
             </div>
         </div>
     </div>
