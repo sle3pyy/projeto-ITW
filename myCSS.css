@@ -71,6 +71,7 @@ li.page-item a {
     width: 63vh;
     height: 34vh;   
 }
+
 .navbar-nav, .pagination{
     background-color: transparent;
     border: 0px;
@@ -100,9 +101,14 @@ p {
     text-decoration: none;
 }
 h2 {
-    color: black;
+    color: white;
     text-decoration: none;
 }
+span {
+    color: white;
+    text-decoration: none;
+}
+
 .colori{
     color: black;
 }
@@ -111,10 +117,25 @@ h2 {
     color:black
 }
 
+body.dark-mode h2{
+    color: gray;
+}
+body.dark-mode span{
+    color: gray;
+}
+.navbar-toggler,
+.navbar-toggler-icon {
+    background-color:white;
+    color: gray !important;
+}
 
+body.dark-mode .navbar-toggler,
+body.dark-mode .navbar-toggler-icon {
+    background-color:black;
+    color: gray !important;
+}
 body.dark-mode a,
 body.dark-mode p,
-body.dark-mode h2,
 body.dark-mode .colori {
     color: #fff;
 }
