@@ -22,7 +22,8 @@ var vm = function () {
     self.Seasons = ko.observable('');
     self.Teams = ko.observable('');
     self.DraftYear = ko.observable('');
-    
+    self.regular = ko.observableArray([])
+    self.playoffs = ko.observableArray([])
     self.Photo = ko.observable('');
 
     //--- Page Events
@@ -50,6 +51,36 @@ var vm = function () {
             self.Teams(data.Teams);
         });
     };
+
+    self.stats = function(id) {
+        console.log('Searching stats for season:', id)
+        var composedUri= self.baseUri() + 'Statistics?id=' + self.Id() + '&seasonId=' + id
+        console.log(composedUri)
+        ajaxHelper(composedUri, 'GET').done(function(data){
+            console.log(data);
+            hideLoading()
+            self.regular(data.Regular)
+            self.playoffs(data.Playoff)
+            console.log(self.regular(),self.playoffs())
+        });
+        $('#seasons').hide()
+        $('#RegularSeasonStats').show()
+    }
+    self.change = function() {
+        if($('#RegularSeasonStats').is(':visible') && $('#PlayoffSeasonStats').is(':hidden')){
+        $('#RegularSeasonStats').hide()
+        $('#PlayoffSeasonStats').show()
+        }
+        else if($('#PlayoffSeasonStats').is(':visible') && $('#RegularSeasonStats').is(':hidden') ){
+        $('#RegularSeasonStats').show()
+        $('#PlayoffSeasonStats').hide()
+        }
+    }
+    self.back = function() {
+    $('#RegularSeasonStats').hide()
+    $('#PlayoffSeasonStats').hide()
+    $('#seasons').show()
+    }
 
   
     //--- Internal functions
@@ -112,6 +143,9 @@ var vm = function () {
 $(document).ready(function () {
     console.log("document.ready!");
     ko.applyBindings(new vm());
+    $('#RegularSeasonStats').hide()
+    $('#PlayoffSeasonStats').hide()
+    $('#seasons').show()
 });
 
 $(document).ajaxComplete(function (event, xhr, options) {

@@ -101,13 +101,167 @@
                 <div class="elem-group inlined">
                     
                     <p>Player's Seasons</p>
-                    <div class="row g-1" data-bind="foreach: Seasons">
+                    <div id="seasons"class="row g-1" data-bind="foreach: Seasons">
                         <div class="col-6">
                             <div class="border rounded py-1 px-2 small">
-                                <a data-bind="text:Id, attr: { href:'./SeasonDetails.html?id=' + Id}"></a>
+                                <a data-bind="text:Id, click: function (data) {$root.stats(Id)}"></a>
                             </div>
                         </div>
-                    </div>          
+                    </div>
+                    <div id="RegularSeasonStats"class="row g-1 centeri" data-bind="foreach: regular">
+                        <!--ko if: GamesPlayed==null--> 
+                        <div class="border rounded py-1 px-2 small">
+                            <p style="margin-bottom:0;">No stats found for this season type</p>
+                        </div>
+                        <!--/ko--> 
+                        <div class="col-6">
+                            <div class="border rounded py-1 px-2 small">
+                                <p style="margin-bottom:0;">Games played: </p>
+                                <p style="margin : 0; padding-top:0;" data-bind="text: GamesPlayed">
+                            </div>
+                            <div class="border rounded py-1 px-2 small">
+                                <p style="margin-bottom:0;">Assists: </p>
+                                <p style="margin : 0; padding-top:0;" data-bind="text: Assists">
+                            </div>
+                            <div class="border rounded py-1 px-2 small">
+                                <p style="margin-bottom:0;">FG Attempts: </p>
+                                <p style="margin : 0; padding-top:0;" data-bind="text: FGAttempts">
+                            </div>
+                            <div class="border rounded py-1 px-2 small">
+                                <p style="margin-bottom:0;">3 point attempts: </p>
+                                <p style="margin : 0; padding-top:0;" data-bind="text: ThreePtFGAttempts">
+                            </div>
+                            <div class="border rounded py-1 px-2 small">
+                                <p style="margin-bottom:0;">Rebounds: </p>
+                                <p style="margin : 0; padding-top:0;" data-bind="text: Rebounds">
+                            </div>
+                            <div class="border rounded py-1 px-2 small">
+                                <p style="margin-bottom:0;">Blocks: </p>
+                                <p style="margin : 0; padding-top:0;" data-bind="text: Blocks">
+                            </div>
+                            <div class="border rounded py-1 px-2 small">
+                                <p style="margin-bottom:0;">Turnovers: </p>
+                                <p style="margin : 0; padding-top:0;" data-bind="text: Turnovers">
+                            </div>
+                            <div class="border rounded py-1 px-2 small">
+                                <p><a data-bind="click: function() {$root.back()}">seasons</a></p>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="border rounded py-1 px-2 small">
+                                <p style="margin-bottom:0;">Minutes played: </p>
+                                <p style="margin : 0; padding-top:0;" data-bind="text: MinutesPlayed">
+                            </div>
+                            <div class="border rounded py-1 px-2 small">
+                                <p style="margin-bottom:0;">PointsScored: </p>
+                                <p style="margin : 0; padding-top:0;" data-bind="text: PointsScored">
+                            </div>
+                            <div class="border rounded py-1 px-2 small">
+                                <p style="margin-bottom:0;">FG hit: </p>
+                                <p style="margin : 0; padding-top:0;" data-bind="text: FGMade">
+                            </div>
+                            <div class="border rounded py-1 px-2 small">
+                                <p style="margin-bottom:0;">3 point hit: </p>
+                                <p style="margin : 0; padding-top:0;" data-bind="text: ThreePtFGMade">
+                            </div>
+                            <div class="border rounded py-1 px-2 small">
+                                <p style="margin-bottom:0;">Steals</p>
+                                <p style="margin : 0; padding-top:0;" data-bind="text: Steals">
+                            </div>
+                            <div class="border rounded py-1 px-2 small">
+                                <p style="margin-bottom:0;">Fouls made:</p>
+                                <p style="margin : 0; padding-top:0;" data-bind="text: PersonalFouls">
+                            </div>
+                            <div class="border rounded py-1 px-2 small">
+                                <p style="margin-bottom:0;">Efficency:</p>
+                                <p style="margin : 0; padding-top:0;" data-bind="text: Efficency">
+                            </div>
+                            <div class="border rounded py-1 px-2 small">
+                                <p style="margin-bottom:0;"><a data-bind="click: function() {$root.change()}">Show playoff stats</a></p>
+                            </div>
+                            
+                        </div> 
+                    </div>
+                    <div id="PlayoffSeasonStats"class="row g-1 centeri" data-bind="foreach: playoffs">
+                        <!--ko if: GamesPlayed==null--> 
+                        <div class="border rounded py-1 px-2 small">
+                            <p style="margin-bottom:0;">No stats found for this season type</p>
+                        </div>
+                        <!--/ko--> 
+                        <div class="col-6">
+                        <!--ko if: GamesPlayed!=null-->    
+                            <div class="border rounded py-1 px-2 small">
+                                <p style="margin-bottom:0;">Games played: </p>
+                                <p style="margin : 0; padding-top:0;" data-bind="text: GamesPlayed">
+                            </div>
+                            <div class="border rounded py-1 px-2 small">
+                                <p style="margin-bottom:0;">Assists: </p>
+                                <p style="margin : 0; padding-top:0;" data-bind="text: Assists">
+                            </div>
+                            <div class="border rounded py-1 px-2 small">
+                                <p style="margin-bottom:0;">FG Attempts: </p>
+                                <p style="margin : 0; padding-top:0;" data-bind="text: FGAttempts">
+                            </div>
+                            <div class="border rounded py-1 px-2 small">
+                                <p style="margin-bottom:0;">3 point attempts: </p>
+                                <p style="margin : 0; padding-top:0;" data-bind="text: ThreePtFGAttempts">
+                            </div>
+                            <div class="border rounded py-1 px-2 small">
+                                <p style="margin-bottom:0;">Rebounds: </p>
+                                <p style="margin : 0; padding-top:0;" data-bind="text: Rebounds">
+                            </div>
+                            <div class="border rounded py-1 px-2 small">
+                                <p style="margin-bottom:0;">Blocks: </p>
+                                <p style="margin : 0; padding-top:0;" data-bind="text: Blocks">
+                            </div>
+                            <div class="border rounded py-1 px-2 small">
+                                <p style="margin-bottom:0;">Turnovers: </p>
+                                <p style="margin : 0; padding-top:0;" data-bind="text: Turnovers">
+                            </div>
+                        <!--/ko-->
+                        <div class="border rounded py-1 px-2 small">
+                            <p><a data-bind="click: function() {$root.back()}">seasons</a></p>
+                        </div>
+                        
+
+                        </div>
+                        <div class="col-6">
+                        <!--ko if: GamesPlayed!=null-->        
+                            <div class="border rounded py-1 px-2 small">
+                                <p style="margin-bottom:0;">Minutes played: </p>
+                                <p style="margin : 0; padding-top:0;" data-bind="text: MinutesPlayed">
+                            </div>
+                            <div class="border rounded py-1 px-2 small">
+                                <p style="margin-bottom:0;">PointsScored: </p>
+                                <p style="margin : 0; padding-top:0;" data-bind="text: PointsScored">
+                            </div>
+                            <div class="border rounded py-1 px-2 small">
+                                <p style="margin-bottom:0;">FG hit: </p>
+                                <p style="margin : 0; padding-top:0;" data-bind="text: FGMade">
+                            </div>
+                            <div class="border rounded py-1 px-2 small">
+                                <p style="margin-bottom:0;">3 point hit: </p>
+                                <p style="margin : 0; padding-top:0;" data-bind="text: ThreePtFGMade">
+                            </div>
+                            <div class="border rounded py-1 px-2 small">
+                                <p style="margin-bottom:0;">Steals</p>
+                                <p style="margin : 0; padding-top:0;" data-bind="text: Steals">
+                            </div>
+                            <div class="border rounded py-1 px-2 small">
+                                <p style="margin-bottom:0;">Fouls made:</p>
+                                <p style="margin : 0; padding-top:0;" data-bind="text: PersonalFouls">
+                            </div>
+                            <div class="border rounded py-1 px-2 small">
+                                <p style="margin-bottom:0;">Efficency:</p>
+                                <p style="margin : 0; padding-top:0;" data-bind="text: Efficency">
+                            </div>
+                        <!--/ko-->        
+                            <div class="border rounded py-1 px-2 small">
+                                <p style="margin-bottom:0;"><a data-bind="click: function() {$root.change()}">Show regular season stats</a></p>
+                            </div>
+                            
+                        </div> 
+                    </div>                              
         </div>
         <div class="elem-group inlined">
             <p>Player's Teams</p>
