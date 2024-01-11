@@ -94,7 +94,7 @@
                 <p data-bind="text: Weight"></p>
             </div>
         </div>
-        <div class="row border-bottom g-2" data-bind="visible: Photo() != '' && Photo() != null">
+        <div class="row border-bottom g-2" style="text-align: center;"data-bind="visible: Photo() != '' && Photo() != null">
             
             <div class="col-6">
                 <!-- ko if:Biography() != "null" -->
@@ -102,7 +102,7 @@
                 <!-- /ko -->
                 <div class="elem-group inlined">
                     
-                    <p>Player's Seasons</p>
+                    <p>Player's stats per season</p>
                     <div id="seasons"class="row g-1" data-bind="foreach: Seasons">
                         <div class="col-6">
                             <div class="border rounded py-1 px-2 small">
